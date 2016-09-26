@@ -1,0 +1,35 @@
+.inside-well {
+    max-height: 100%;
+    max-width: 100%
+}
+.timeline-picture {
+  float: right;
+  position:relative;
+  max-width: 47%;
+     
+
+
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+} 
+.word-color{
+    color:white;
+}
+.nav-second-level {
+   
+
+}
+.middle{
+    align-items:center;
+}
+
+.logo{
+    max-height:100px;
+   
+    position:absolute;
+    padding-left:20px;
+    top:0px;
+    left:0px;
+}
