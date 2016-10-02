@@ -27,9 +27,9 @@
 
 .logo{
     max-height:100px;
-   
+   float:left;
     position:absolute;
-    padding-left:20px;
-    top:0px;
-    left:0px;
+    
+  top:0px;
+    left:70px;
 }

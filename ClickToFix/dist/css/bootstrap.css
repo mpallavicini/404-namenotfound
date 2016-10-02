@@ -4152,7 +4152,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-static-top {
   border-width: 0 0 1px;
     background-color:#036;
-    padding-top:40px;
+    padding-top:60px;
 }
 
 
@@ -4191,6 +4191,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
     
   max-height:50px;
+    margin-left:200px;
   
   
   color:#fff;
