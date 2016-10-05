@@ -1,16 +1,25 @@
 <?php 
     include_once("db_connect.php");
-
-    $msg = $_POST["message"];
     
-    $sql = "INSERT INTO issues(message) VALUES('$msg')";
-    $query = mysqli_query($db, $sql);
+    //Checking to see if the Post is sent
+    if(isset($_POST['issueName']))
+    { 
+        $msg = $_POST['message']; 
+        
+        $issues = $_POST['issueName']; 
+        
+        $sqli = "INSERT INTO issues(message, issueName) VALUES('$msg', '$issues')";
+    
+        $query = mysqli_query($db, $sqli);
 
-    if ($query === true) {
-        echo "Success";
-    } else {
-        echo "Fail";
-    }
+        if ($query === true) {
+            echo "Success";
+        } else {
+            echo "Fail";
+        }
+    } 
+
+  
 
  
 ?>

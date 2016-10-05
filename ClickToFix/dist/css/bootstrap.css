@@ -1931,6 +1931,7 @@ textarea.input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
+    
   }
   .form-inline .radio,
   .form-inline .checkbox {

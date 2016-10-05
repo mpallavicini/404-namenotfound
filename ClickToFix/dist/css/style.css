@@ -61,7 +61,10 @@ body {
 .message {
     border-radius: 0;
     border: none;
+    margin-bottom:5px;
+    
 }
+
 
 .panel {
     border-radius: 0;
