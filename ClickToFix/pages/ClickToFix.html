@@ -25,7 +25,9 @@
     
     <link href="../dist/css/my-css.css" rel="stylesheet">
     <link href="../dist/css/style.css" rel="stylesheet">
-
+    
+    
+    <script src="../js/comment_issue.js"></script>
    
 
     
@@ -439,9 +441,14 @@
                             <img class = "panel-body inside-well" src = "../Screen%20Shot%202016-09-08%20at%209.50.14%20PM.png">
                         </div>
                         <div class="panel-footer">
+                            <button onclick="toggleComment('comment1')">Comment</button>
                             <strong>Posted: </strong> September 15, 2016 At 11:34pm 
                         </div>
+                        <div class="panel-footer" style="display: none" id="comment1">
+                            <p>Hello, I am a comment.</p>
+                        </div>
                     </div>
+                    <br><br>
                 </div>
                 <!-- /.col-lg-4 -->
                 <div class="col-lg-12">
