@@ -6,9 +6,10 @@
     { 
         $msg = $_POST['message']; 
         
-        $issues = $_POST['issueName']; 
+        $name = $_POST['issueName']; 
+        $loc = 'SU80';
         
-        $sqli = "INSERT INTO issues(message, issueName) VALUES('$msg', '$issues')";
+        $sqli = "INSERT INTO issues(message, name, location) VALUES('$msg', '$name', '$loc')";
     
         $query = mysqli_query($db, $sqli);
 
@@ -21,7 +22,4 @@
          header("Location: ../index.html");
     } 
 
- 
-
- 
 ?>
