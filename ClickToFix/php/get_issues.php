@@ -1,7 +1,7 @@
 <?php
     include_once("db_connect.php");
 
-    $sql = "SELECT name FROM issues WHERE id=1";
+    $sql = "SELECT name FROM issues";
     $query = mysqli_query($db, $sql);
 
     if ($query === true) {

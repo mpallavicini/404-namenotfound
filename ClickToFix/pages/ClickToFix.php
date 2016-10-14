@@ -1,6 +1,6 @@
 <?php
-    $issueName = "issue";
-?>
+include_once("../php/get_issues.php");
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -438,7 +438,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <?php
-                                    echo $issueName;
+                                    echo $name;
                             ?>
                         </div>
                         <div class="panel-body">
