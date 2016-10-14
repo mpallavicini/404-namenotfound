@@ -1,3 +1,6 @@
+<?php
+    include_once("../php/get_issues.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -433,7 +436,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Default Panel
+                            <?php echo $issueName; ?>
                         </div>
                         <div class="panel-body">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
