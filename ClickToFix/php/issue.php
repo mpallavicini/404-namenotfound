@@ -17,9 +17,11 @@
         } else {
             echo "Fail";
         }
+        
+         header("Location: ../index.html");
     } 
 
-  
+ 
 
  
 ?>
