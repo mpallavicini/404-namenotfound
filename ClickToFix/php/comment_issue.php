@@ -4,8 +4,10 @@
     if(isset($_POST["issue_id"])) {
         $issue_id = $_POST["issue_id"];
         $commemt = $_POST["comment"];
+        $owner = $_POST["user"];
+        $loc = $_POST["loc"];
         
-        $sql = "INSERT INTO comments(comment) VALUES('$comment')";
+        $sql = "INSERT INTO comments(comment, comment_owner, building_location)             VALUES('$comment', '$owner', '$loc'";
         $query = mysqli_connect($db, $sql);
         
         if ($querty === true) {
@@ -14,23 +16,6 @@
             echo "Failure to insert into comments table.";
         }
         
-        $sql = "SELECT MAX(id) FROM comments";
-        $query = mysqli_connect($db, $sql);
-        $data = mysqli_fetch_array($query);
-        
-        if (count($data) != 0) {
-            echo "ID '$data[0]' was last one added.";
-        } else {
-            echo "Failure to get ID back.";
-        }
-        
-        $sql = "INSERT INTO issues_comments(issue_id, comment_id) VALUES('$issue_id', '$$data[0]')";
-        $query = mysqli_connect($db, $sql);
-        
-        if ($querty === true) {
-            echo "Success inserting into issues_comments table."
-        } else {
-            echo "Failure to insert into issues_comments table.";
-        }
+        exit();
     }
 ?>
