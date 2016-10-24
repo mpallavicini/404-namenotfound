@@ -64,6 +64,10 @@ body {
     margin-bottom:5px;
     
 }
+#status_message{
+    max-width:100%;
+    
+}
 
 
 .panel {

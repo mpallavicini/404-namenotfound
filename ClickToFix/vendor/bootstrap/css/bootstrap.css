@@ -1147,7 +1147,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eee;
+  border-top: 2px inset #eee;
 }
 .sr-only {
   position: absolute;
@@ -5471,6 +5471,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-heading {
   padding: 10px 15px;
+    color:azure;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
