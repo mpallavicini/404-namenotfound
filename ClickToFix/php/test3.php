@@ -9,7 +9,7 @@ $my_folder = "../data/";
 copy($_FILES['image']['tmp_name'], $my_folder.$_FILES['image']['name']);
 echo "file uplaoded";
 
-/*$file = mysqli_real_escape_string($_FILES['image']['tmp_name']); 
+$file = mysqli_real_escape_string($_FILES['image']['tmp_name']); 
 
 //image= image name, tmp_name = temporary location in web directory
  
@@ -22,15 +22,16 @@ $image  = file_get_contents($_FILES['image']['tmp_name']);   // same as $file
 //image is same as the name we have in the form to upload the photo
 //File_get_contents function to get the data inside the file
  
-$image_name =  $_FILES['image']['name'];   //return actual file name as uploaded
-$image_size = getimagesize(= $_FILES['image']['tmp_name']);   //getting image size from the temp. location
+$imageName =  $_FILES['image']['name'];   //return actual file name as uploaded
+$imageSize = getimagesize(= $_FILES['image']['tmp_name']);   //getting image size from the temp. location
 //getimagesize will return false if it is not an image file,
-if ($image_size = = FALSE)
+if ($imagSize = = FALSE)
 echo "It is not an image";
 else
 {
-if(!$insert = mysql_query("INSERT INTO image VALUES ('','','$image_name','$image')"))
-echo "Problem uploading image.";
+$insertImage = "INSERT INTO image (issue_id, image_name, image) VALUES ('','$imageName','{$image}')");
+    if(mysqli_query($db,$insertImage))
+        echo "New Record Created";
 else
 {
 
@@ -39,6 +40,6 @@ else
 }
 }
 }
-*/
+
 
 ?>
