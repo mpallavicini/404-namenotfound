@@ -4,7 +4,6 @@ include_once("../php/db_connect.php");
 echo "gjg";
 //file properties
 
-
 $my_folder = "../data/";
 copy($_FILES['image']['tmp_name'], $my_folder.$_FILES['image']['name']);
 echo "file uplaoded";
