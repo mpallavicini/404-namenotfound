@@ -415,8 +415,12 @@
 									<div class="col-md-7">
 										<div class="form-group">
 											<div class="btn-group">
-											  <button type="button" class="btn btn-default"><i class="icon icon-map-marker"></i> Location</button>
-											  <button type="button" class="btn btn-default"><i class="icon icon-picture"></i> Photo</button>
+											  
+                            
+                                            <input id = "fileInput" type="file" name="fileInput" >
+                                                
+                                
+                                                
 											</div>
 										</div>
 									</div>
