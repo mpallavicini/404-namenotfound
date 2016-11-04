@@ -54,3 +54,13 @@
     font-size:19px;
     font-weight:400;
 }
+.right {
+    text-align:right;
+    
+    align-content:right;
+    align-items: right;
+}
+
+.form-control {
+   border:solid .5px #eeeeee;
+}
