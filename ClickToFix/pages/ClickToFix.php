@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+    include_once("../php/logincheck.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +69,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="ClickToFix.html"><img class= "logo" src = "../img/logo4.png"></a>
+                <a class="navbar-brand" href="ClickToFix.php"><img class= "logo" src = "../img/logo4.png"></a>
                 
             </div>
             <!-- /.navbar-header -->
@@ -296,7 +301,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a class= "active" href="ClickToFix.html"><i class="fa fa-home fa-fw"></i>Home</a>
+                            <a class= "active" href="ClickToFix.php"><i class="fa fa-home fa-fw"></i>Home</a>
                         </li>
                         
                     
@@ -306,7 +311,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class = "word-color"href="ClickToFix.html">Panels and Wells</a>
+                                    <a class = "word-color"href="ClickToFix.php">Panels and Wells</a>
                                 </li>
                                 
                             </ul>

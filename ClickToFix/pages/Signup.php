@@ -1,5 +1,11 @@
 <?php
-    include_once("../php/logincheck.php");
+    session_start();
+
+    if (isset($_SESSION['useremail'])) {
+        header("location: ClickToFix.php");
+        exit();
+    }
+
     include_once("../php/signup.php");
 ?>
 <!DOCTYPE html>

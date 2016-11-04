@@ -1,6 +1,6 @@
 <?php
-    if (isset($_SESSION['username'])) {
-        header("location: pages/ClitkToFix.php");
+    if (!isset($_SESSION['useremail'])) {
+        header("location: login.php");
         exit();
     }
 ?>
