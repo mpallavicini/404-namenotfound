@@ -66,7 +66,7 @@
                         //$datamsg = mysqli_fetch_assoc($querymsg);
                         
                         //$datatime = mysqli_fetch_assoc($querytime);
-
+                        $variableId=0;
                 while ($fetch = mysqli_fetch_assoc($query))
                 {
                        // $dataname = mysqli_fetch_assoc($query);
@@ -86,28 +86,18 @@
                         
                         
                         echo  " <div class='panel-heading'><strong> $name </strong></div>";
-                        
-                        
+                    
                         
                         echo " <div class='panel-body'> $msg </div>";
                         
                         echo "<div class='panel-footer'><strong>Posted: </strong> $timeago </div>";
+                        echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button>";
+                        
+                        $variableId++;
                         echo "<hr>";
                     
-                }
-
- 
-
-                        echo "<div  id='feed'>";
-    
-                        
-                            
-                            
-                         
-        
-                        echo "<div class='panel-footer'>
-                     <button onclick='toggleComment('comment1')'>Comment</button>";
+                };
      ?>
-                        
+            
 
  

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +11,10 @@
     <meta name="author" content="">
 
     <title>ClickToFix</title>
-
+    
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -23,13 +24,24 @@
      <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     
-    <link href="../dist/css/my-css.css" rel="stylesheet">
+    
     <link href="../dist/css/style.css" rel="stylesheet">
-
+    <link href="../dist/css/my-css.css" rel="stylesheet">
+    
+    <script src="../js/ajax.js"></script>
     <script src="../js/comment_issue.js"></script>
     <script src="../js/jquery.js"></script>
+    
+    
    
 
+    
+    
+    
+    
+    
+    <!-- Custom Fonts -->
+   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,18 +57,20 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            
             <div class="navbar-header">
+                
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <a class="navbar-brand" href="ClickToFix.html"><img class= "logo" src = "../img/logo.png"></a>
+                <a class="navbar-brand" href="ClickToFix.html"><img class= "logo" src = "../img/logo4.png"></a>
+                
             </div>
             <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
+<ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -271,29 +285,37 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
+                                
+                                <!--SEARCH DATABASE MAYBE-->
+                                
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
                             </div>
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="ClickToFix.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                            <a class= "active" href="ClickToFix.html"><i class="fa fa-home fa-fw"></i>Home</a>
                         </li>
                         
-                        <li>
+                    
+                        
+                        <!-- UI ELEMENTS-->
+                        <li class = "active">
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="ClickToFix.html">Panels and Wells</a>
+                                    <a class = "word-color"href="ClickToFix.html">Panels and Wells</a>
                                 </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
+                        
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -303,32 +325,28 @@
                                 <li>
                                     <a href="#">Second Level Item</a>
                                 </li>
+                                
+                                
+                                <!-- THIRD LEVEL STUFF-->
                                 <li>
                                     <a href="#">Third Level <span class="fa arrow"></span></a>
+                                    
                                     <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
+                                        <!--THIRD LEVEL STUFF-->
+                                        
+                                        
                                     </ul>
+                                    
                                     <!-- /.nav-third-level -->
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class="active" href="blank.html">Blank Page</a>
+                                    <a href="../pages/blank.html">Blank Page</a>
                                 </li>
                                 <li>
                                     <a href="login.html">Login Page</a>
@@ -343,35 +361,174 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
-                        
-                        <form id = "upload" action="../php/test3.php" method="POST" enctype="multipart/form-data">
-                                File:
-                            <input id = "file" type="file" name="file" ><input type="submit" value="upload">
-                            </form>
-                        
-                        
-                        
-                        
-                    </div>
-                    <!-- /.col-lg-12 -->
+<div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Issues and Problems</h1>
                 </div>
-                <!-- /.row -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.container-fluid -->
-        </div>
+            
+            
+            
+    <div class="container">
+	<div class="row">
+	<div class="col-lg-12 col-md-offset-0 " >
+		
+		
+        
+        
+        <!--************POSTING UPDATES**************-->
+        
+		<form action="../php/issue.php" method="post" role="form" enctype="multipart/form-data" class="facebook-share-box">
+			
+			
+			<div class="share">
+				
+				<div class="panel panel-default">
+                      <div class="panel-heading"><i class="fa fa-file"></i> Post an Issue</div>
+                      <div class="panel-body">
+                        <div class="padding-issue-name">
+                            <textarea name = "issueName" cols = "30" rows= "1" id = "status_message" class = "form-control message"  placeholder = "Issue Name e.g. Broken Light"></textarea>
+                            
+                           <script> function required(message) 
+                                {
+                                     //if (message.value.length == 0)
+                                     // { 
+                                       //  alert("message");  	
+                                       //  return false; 
+                                     // }  	
+                                     // return true; 
+                                    } 
+
+                               </script>
+                            <textarea name="message" cols="30" rows="4" id="status_message1" placeholder= "Description of Issue" class="form-control message"></textarea> 
+						</div>
+                      </div>
+						<div class="panel-footer">
+								<div class="row">
+									<div class="col-md-7">
+										<div class="form-group">
+											<div class="btn-group">
+											  <button type="button" class="btn btn-default"><i class="icon icon-map-marker"></i> Location</button>
+											  <button type="button" class="btn btn-default"><i class="icon icon-picture"></i>Photo</button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="form-group">
+											<select name="privacy" class="form-control privacy-dropdown pull-left input-sm">
+												<option value="1" selected="selected">Engineering East</option>
+												<option value="2">General South</option>
+												<option value="3">Breezeway</option>
+											</select>                                    
+											<input type="submit" name="submit" id="myForm" onsubmit="return validate();" value="Post" class="btn right btn-primary">   
+                                            <button type="button" value="Clear" onclick= "javascript:eraseText(); javascript:eraseText1();" class="btn btn-danger">Cancel</button>
+                                            
+                                         
+                                           <script>  
+                                               function eraseText() {
+                                                   document.getElementById("status_message").value = "";
+                                               }
+                                               function eraseText1() {
+                                                   document.getElementById("status_message1").value = "";
+                                               }
+                                            </script>
+
+										</div>
+									</div>
+								</div>
+						</div>
+                    </div>
+			</div>
+			
+		</form>
+              
+       
+
+        
+        
+	</div>
+	</div>
+	</div> 
+
+            
+            
+            
+            <!-- /.row -->
+            <div class="row">
+            
+                
+                
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                          <script>
+                        $(document).ready(function(){
+                        //$("#loader").hide();
+                        
+                        $("#feed").load("../php/newfeed.php");
+                    
+                            
+                        
+                    });               
+                    </script>
+                        
+                        <div  id="feed">
+                            <div class="panel-footer">
+                            <button onclick="toggleComment('comment1')">Comment</button>
+                            
+                        </div>
+                            
+                            <div id="loader" >Loading.....</div>
+                            
+                            
+                        
+                            
+                           
+        
+                        
+                        
+                        
+                        
+                        </div>
+                        <div class="panel-footer" style="display: none" id="comment1">
+                            <p>Hello, I am a comment.</p>
+                        </div>
+        
+                        
+                       </div>
+                    
+                    </div>
+                    <br><br>
+                </div>
+                
+            <!-- /.row -->
+           
+            <!-- /.row -->
+        
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+    </div>
+<!--    <!-- jQuery 
+   <script src="../vendor/jquery/jquery.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript 
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    -->
+    
+    
+   
+       <!-- jQuery -->
+     <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -382,14 +539,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-    
-    
-    
-    
-  
     <script src="js/ajax.js"></script>
-    
-    
+
 </body>
 
 </html>
