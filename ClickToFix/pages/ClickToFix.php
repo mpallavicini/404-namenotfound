@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+    include_once("../php/logincheck.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +29,11 @@
      <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     
-    <link href="../dist/css/my-css.css" rel="stylesheet">
-    <link href="../dist/css/style.css" rel="stylesheet">
     
+    <link href="../dist/css/style.css" rel="stylesheet">
+    <link href="../dist/css/my-css.css" rel="stylesheet">
+    
+    <script src="../js/ajax.js"></script>
     <script src="../js/comment_issue.js"></script>
     <script src="../js/jquery.js"></script>
     
@@ -64,7 +71,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="ClickToFix.html"><img class= "logo" src = "../img/logo4.png"></a>
+                <a class="navbar-brand" href="ClickToFix.php"><img class= "logo" src = "../img/logo4.png"></a>
                 
             </div>
             <!-- /.navbar-header -->
@@ -296,7 +303,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a class= "active" href="ClickToFix.html"><i class="fa fa-home fa-fw"></i>Home</a>
+                            <a class= "active" href="ClickToFix.php"><i class="fa fa-home fa-fw"></i>Home</a>
                         </li>
                         
                     
@@ -306,7 +313,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a class = "word-color"href="ClickToFix.html">Panels and Wells</a>
+                                    <a class = "word-color"href="ClickToFix.php">Panels and Wells</a>
                                 </li>
                                 
                             </ul>
@@ -387,7 +394,7 @@
                       <div class="panel-heading"><i class="fa fa-file"></i> Post an Issue</div>
                       <div class="panel-body">
                         <div class="padding-issue-name">
-                            <textarea name = "issueName" cols = "30" rows= "1" id = "status_message" class = "form-control message" placeholder = "Issue Name e.g. Broken Light"></textarea>
+                            <textarea name = "issueName" cols = "30" rows= "1" id = "status_message" class = "form-control message"  placeholder = "Issue Name e.g. Broken Light"></textarea>
                             
                            <script> function required(message) 
                                 {
@@ -420,7 +427,15 @@
 												<option value="2">Only my friends</option>
 												<option value="3">Only me</option>
 											</select>                                    
-											<input type="submit" name="submit" value="Post" class="btn btn-primary">                               
+											<input type="submit" name="submit" value="Post" class="btn right btn-primary">   
+                                            <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
+                                            
+                                           <script> 
+                                               function eraseText() {
+                                                   document.getElementById("status_message && status_message").value = "";
+                                               }
+                                            </script>
+
 										</div>
 									</div>
 								</div>
@@ -455,7 +470,11 @@
                     </script>
                         
                         <div  id="feed">
-    
+                            <div class="panel-footer">
+                            <button onclick="toggleComment('comment1')">Comment</button>
+                            
+                        </div>
+                            
                             <div id="loader" >Loading.....</div>
                             
                             
@@ -463,10 +482,7 @@
                             
                            
         
-                        <div class="panel-footer">
-                            <button onclick="toggleComment('comment1')">Comment</button>
-                            
-                        </div>
+                        
                         
                         
                         

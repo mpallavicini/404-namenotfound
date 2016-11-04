@@ -1,21 +1,15 @@
 <?php
     include_once("db_connect.php");
 
-    if(isset($_POST["issue_id"])) {
-        $issue_id = $_POST["issue_id"];
-        $commemt = $_POST["comment"];
-        $owner = $_POST["user"];
-        $loc = $_POST["loc"];
+    if(isset($_POST["msg"])) {
         
-        $sql = "INSERT INTO comments(comment, comment_owner, building_location)             VALUES('$comment', '$owner', '$loc'";
-        $query = mysqli_connect($db, $sql);
+        $msg = $_POST["msg"];
+
         
-        if ($querty === true) {
-            echo "Success inserting into comments table."
-        } else {
-            echo "Failure to insert into comments table.";
-        }
-        
+        $sql = "INSERT INTO comments(comment) VALUES('$msg')";
+        $query = mysqli_query($db, $sql);
+ 
+        echo $msg;
         exit();
     }
 ?>
