@@ -4,7 +4,7 @@
     include_once("../php/check_login_status.php");
     include_once("../php/logincheck.php");
 
-    $sql = "SELECT name, status, id, status FROM issues WHERE id=112";
+    $sql = "SELECT name, status, id, status FROM issues LIMIT 1";
     $query = mysqli_query($db, $sql);
     $row = mysqli_fetch_row($query);
     $issueName = $row[0];
@@ -54,12 +54,28 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
 
     <script src="../js/misc.js"></script>
     <script src="../js/ajax.js"></script>
     <script src="../js/updateStatus.js"></script>
     <script src="../js/logout.js"></script>
+    <script src="../js/delete.js"></script>
     
+    <?php
+        require_once("../php/delete_confirm.php");
+    ?>
 </head>
 
 <body>
@@ -96,21 +112,14 @@
                             <br><br>
                             <div id="status"></div>
                         
+                            <br>
+                            <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Issue" data-message="Are you sure you want to delete this issue?">
+                                <i class="glyphicon glyphicon-trash"></i> Delete
+                            </button>
+                        
                             <br><br><br>
                             <button id="logoutbtn" onclick="logout()" class="btn btn-lg btn-success btn-block">Log Out</button>
                         </h3>
-
-        <!-- jQuery -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-        <!-- Custom Theme JavaScript -->
-        <script src="../dist/js/sb-admin-2.js"></script>
                     </div>
                 </div>
             </div>
