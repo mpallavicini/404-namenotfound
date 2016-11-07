@@ -64,3 +64,6 @@
 .form-control {
    border:solid .5px #eeeeee;
 }
+input.form-control{
+    background-color:#feffff;
+}

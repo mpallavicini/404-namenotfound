@@ -22,7 +22,7 @@
     }
 
     //Checking to see if the Post is sent
-    if(empty($_POST['issueName'] && $_POST['message'])== false)  //Make sure that issueName and message is filled out in ClicktoFix
+    if(empty($_POST['issueName'] && $_POST['message'] && $_POST['loc'])== false)  //Make sure that issueName and message is filled out in ClicktoFix
     { 
         $msg =  $_POST['message']; //passing variable 'msg' the value from 'message' form entered by user
         $_msg = addslashes($msg);
@@ -30,7 +30,7 @@
         
         $name = $_POST['issueName']; //passing variable 'name' the value from the 'issueName' form entered by user
         $_name = addslashes($name);
-        $loc = 'SU80';
+        $loc = $_POST['loc'];
         
         $sql = "INSERT INTO issues (message, name, location) VALUES('$_msg', '$name', '$loc')";
      
