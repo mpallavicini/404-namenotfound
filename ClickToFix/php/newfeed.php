@@ -33,6 +33,7 @@
                     $sqlid = "SELECT id FROM issues ORDER BY id DESC";
                     $queryid = mysqli_query($db, $sqlid);
 
+<<<<<<< HEAD
 
                     $displayQry = "SELECT image FROM images ORDER BY image_id";
                             
@@ -40,6 +41,14 @@
                             
                     $sqlimage = mysqli_query($db, $displayQry);
                             
+=======
+                    $sqlbuild = "SELECT loc FROM issues ORDER BY id DESC";
+                    $querybuild = mysqli_query($db, $sqlbuild);
+
+                   /* $sqlimg = "SELECT image FROM issues ORDER BY id DESC";
+                    $queryimg = mysqli_query($db, $sqlimg);
+*/
+>>>>>>> 12946e4f9b2e70d9cffdb95f48bf585ac331374f
                         //Function to convert the timedat format from php into "Ago Time" ie. "4 hours ago"
 
                         function get_timeago( $ptime ){
@@ -96,6 +105,8 @@
                         $datamsg = mysqli_fetch_assoc($querymsg);
                         
                         $datatime = mysqli_fetch_assoc($querytime);
+                        
+                        //$dataimg = mysqli_fetch_assoc($queryimg);
                     
                         $row = mysqli_fetch_assoc($sqlimage);
                     
@@ -105,6 +116,7 @@
                         $msg = nl2br($datamsg['message']);//New Line Break
                         
                         $time = nl2br($datatime['datetime']);//New Line Break
+<<<<<<< HEAD
                         
                         $timeago = get_timeago(strtotime($time));
                    
@@ -115,6 +127,11 @@
                     
                         
 //calling the Ago Time function and passing variable time from php database.
+=======
+                       // $img = nl2br($dataimg['image']); //New line break
+                    
+                        $timeago = get_timeago(strtotime($time)); //calling the Ago Time function and passing variable time from php database.
+>>>>>>> 12946e4f9b2e70d9cffdb95f48bf585ac331374f
                         //'strtotime' converts the time into a string element so the function can mess with it
                         
                         
@@ -130,6 +147,10 @@
                         echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button>";
                     
                         
+                    
+                     //   echo '<dt><strong>Technician Image:</strong></dt><dd>'
+   //  . '<img src="data:image/jpeg;base64,' . base64_encode($img['image']) . '" width="290" height="290">'
+  //   . '</dd>';
                         $variableId++;
                         echo "<hr>";
                     
