@@ -466,7 +466,7 @@
                         //$("#loader").hide();
                         
                         $("#feed").load("../php/newfeed.php");
-                    
+                        
                             
                         
                     });               

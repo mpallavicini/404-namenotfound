@@ -32,6 +32,14 @@
                         
                     $sqlid = "SELECT id FROM issues ORDER BY id DESC";
                     $queryid = mysqli_query($db, $sqlid);
+
+
+                    $displayQry = "SELECT image FROM images ORDER BY image_id";
+                            
+
+                            
+                    $sqlimage = mysqli_query($db, $displayQry);
+                            
                         //Function to convert the timedat format from php into "Ago Time" ie. "4 hours ago"
 
                         function get_timeago( $ptime ){
@@ -62,6 +70,20 @@
                                 }
                             }
                         }
+
+                        //function showImage($id){
+                        
+
+                            //echo "test";
+                           
+                            
+
+                            
+
+
+                          
+                             
+                       // }
                         
                         //$datamsg = mysqli_fetch_assoc($querymsg);
                         
@@ -75,13 +97,24 @@
                         
                         $datatime = mysqli_fetch_assoc($querytime);
                     
+                        $row = mysqli_fetch_assoc($sqlimage);
+                    
+                    
                         $name = nl2br($fetch['name']);//New Line Break
                         
                         $msg = nl2br($datamsg['message']);//New Line Break
                         
                         $time = nl2br($datatime['datetime']);//New Line Break
                         
-                        $timeago = get_timeago(strtotime($time)); //calling the Ago Time function and passing variable time from php database.
+                        $timeago = get_timeago(strtotime($time));
+                   
+                        
+                    
+                        $imageData = nl2br($row['image']);
+                        $imgData = base64_encode($imageData);
+                    
+                        
+//calling the Ago Time function and passing variable time from php database.
                         //'strtotime' converts the time into a string element so the function can mess with it
                         
                         
@@ -89,9 +122,13 @@
                     
                         
                         echo " <div class='panel-body'> $msg </div>";
+                    
+                        echo "<img src='data:image/jpeg;base64,".$imgData."' height='900 width='1024'/>";
+                        //echo '<img src="data:image/jpeg;base64,'.$imageData.'" height = "928" width="1024"/>';
                         
                         echo "<div class='panel-footer'><strong>Posted: </strong> $timeago </div>";
                         echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button>";
+                    
                         
                         $variableId++;
                         echo "<hr>";
