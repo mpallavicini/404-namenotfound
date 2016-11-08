@@ -1,5 +1,6 @@
 <?php
     if (isset($_POST["e"])) {
+        session_start();
         include_once("db_connect.php");
         
         $e = $_POST['e'];
@@ -24,7 +25,7 @@
                 $_SESSION['userid'] = $db_id;
                 $_SESSION['useremail'] = $db_useremail;
                 $_SESSION['password'] = $db_pass_str;
-                if ($_POST["r"]) {
+                if (isset($_POST['r'])) {
                     setcookie("id", $db_id, strtotime('+30 days'), "/", "", "", TRUE);
                     setcookie("email", $db_useremail, strtotime('+30 days'), "/", "", "", TRUE);
                     setcookie("pass", $row[2], strtotime('+30 days'), "/", "", "", TRUE);
