@@ -18,6 +18,10 @@ function login() {
                 }
             }
         }
-        ajax.send("e="+e+"&p="+p+"&r="+r);
+        if (r == true) {
+            ajax.send("e="+e+"&p="+p+"&r="+r);
+        } else {
+            ajax.send("e="+e+"&p="+p);
+        }
     }
 }
