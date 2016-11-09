@@ -267,7 +267,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-key fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -275,7 +275,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../php/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -384,7 +384,10 @@
         
         <!--************POSTING UPDATES**************-->
         
-		<form action="../php/issue.php" method="post" role="form" enctype="multipart/form-data" class="facebook-share-box">
+        
+        
+
+		<form id ="upload" action="../php/issue.php" method="post"  enctype="multipart/form-data" class="facebook-share-box">
 			
 			
 			<div class="share">
@@ -416,26 +419,108 @@
 											<div class="btn-group">
 											  
                             
-                                            <input id = "fileInput" type="file" name="fileInput" >
+                                           
+                                                <div class="input-group">
+                                       
+                                       
+                            <input id = "fileInput" class = "btn btn-default" type="file" name="fileInput" >
+                                    </div>
                                                 
-                                
+                                <script>
+                        $(function() {
+/*
+                          // We can attach the `fileselect` event to all file inputs on the page
+                          $(document).on('change', ':file', function() {
+                            var input = $(this),
+                                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                            input.trigger('fileselect', [numFiles, label]);
+                          });
+
+                          // We can watch for our custom `fileselect` event like this
+                          $(document).ready( function() {
+                              $(':file').on('fileselect', function(event, numFiles, label) {
+
+                                  var input = $(this).parents('.input-group').find(':text'),
+                                      log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                                  if( input.length ) {
+                                      input.val(log);
+                                  } else {
+                                      if( log ) alert(log);
+                                  }
+
+                              });
+                          });
+
+                        });*/
+                                                
+                                                </script>
                                                 
 											</div>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
-											<select name="privacy" class="form-control privacy-dropdown pull-left input-sm">
-												<option value="1" selected="selected">Public</option>
-												<option value="2">Only my friends</option>
-												<option value="3">Only me</option>
-											</select>                                    
-											<input type="submit" name="submit" value="Post" class="btn right btn-primary">   
+                                            <!--Locations of all the buildings-->
+											<select name="loc" class="form-control privacy-dropdown pull-left input-md">			
+                                                <option value="" disabled selected>Please Select Location</option>
+                                                <option value="SU80" >Admissions</option>
+												<option value="31E">Student Activities Center</option>
+                                                <option value="AC67">Tom Oxley Athletic Center</option>
+                                                <option value="AD10">Administration, KR Williams</option>
+                                                <option value="AG39">Ritter Art Gallery</option>
+                                                <option value="AH52">Arts and Humanities</option>
+                                                <option value="AL9">College of Arts and Letters, Schmidt</option>
+                                                <option value="AU31A">Carole and Barry Kaye Auditorium</option>
+                                                <option value="AZ79">Memory and Wellness Center</option>
+                                                <option value="BB48">Baseball Stadium</option>
+                                                <option value="BC71">College of Medicine, Schmidt</option>
+                                                <option value="BK76">Bookstore</option>
+                                                <option value="BS12">Behavioral Sciences</option>
+                                                <option value="BU86">College of Business</option>
+												<option value="CC45">Karen Slattery Ed Res Ctr for Child Dev</option>
+                                                <option value="CC455">Peter and Nona Gordon Library/Media Center</option>
+                                                <option value="CE31D">Continuing Education Hall</option>
+                                                <option value="CM22">Computer Center</option>
+                                                <option value="CO69">Campus Operations, Police, Traffic and Parking</option>
+                                                <option value="CU97">Culture and Society Building, Living Room Theaters</option>
+                                                <option value="DM6">Nations North - Algonquin</option>
+                                                <option value="DM70E">Indian River East Tower</option>
+                                                <option value="DM70W">Indian River West Tower</option>
+                                                <option value="DM89N">Heritage Park North Tower</option>
+                                                <option value="DM89S">Heritage Park South Tower</option>
+                                                <option value="DM92N">Galdes Park North Tower</option>
+                                                <option value="DM92S">Glades Park South Tower</option>
+                                                <option value="DP49">Glades Davis Pavillion</option>
+                                                <option value="DS86">Desantis Pavillion</option>
+                                                <option value="ED47">College of Education</option>
+                                                <option value="EE">College of Engineering</option>
+                                                <option value="EE96">Engineering East</option>
+                                                <option value="EG36">Engineering West</option>
+                                                <option value="FA94">Alumni Center, Marleen and Harold Forkas</option>
+                                                <option value="FH11">Athletic Field House - Pool</option>
+                                                <option value="FL24">Fleming Hall</option>
+                                                <option value="FOOD">Food and Services</option>
+                                                <option value="FS100">FAU Stadium</option>
+                                                <option value="FW11A">Athletic Field House West</option>
+                                                <option value="FW11">Fleming West</option>
+                                                <option value="GN73">General Classroom North</option>
+                                                <option value="GP92">Glades Park Tower</option>
+                                                <option value="GS2">General Classroom South</option>
+                                                <option value="GY38">Arena</option>
+                                                <option value="HP89">Heritage Park Towers</option>
+                                                <option value="HS26">AD Henderson Univ School</option>
+                                                <option value="IG41">Information Booth</option>
+                                                <option value="IR70">Indian River Towers</option>
+                                           
+											</select>                                   
+											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn right btn-primary"> 
                                             <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
                                             
                                            <script> 
                                                function eraseText() {
-                                                   document.getElementById("status_message && status_message").value = "";
+                                                   document.getElementById("status_message").value = "";
                                                }
                                             </script>
 
@@ -466,7 +551,7 @@
                         //$("#loader").hide();
                         
                         $("#feed").load("../php/newfeed.php");
-                    
+                        
                             
                         
                     });               

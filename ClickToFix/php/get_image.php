@@ -8,11 +8,11 @@ function showImage($id)
     die("Connection failed: " . mysqli_connect_error());
 }
 
-	//echo "Test";
+	echo "Test";
 	
-	//$id = $_REQUEST['id'];
+	$id = $_REQUEST['id'];
 	
-	$displayQry = "SELECT image FROM mydb.image WhERE image_id = $id"; 	
+	$displayQry = "SELECT image FROM mydb.image WHERE image_id = $id"; 	
 	
 	$displayQry = mysqli_query($db, $displayQry);
 	

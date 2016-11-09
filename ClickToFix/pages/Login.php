@@ -78,7 +78,7 @@
                                 <br>
                                 <div id="status"></div>
                                 <br>
-                                <a href="#">Forgot Your Password?</a>
+                                <a href="../pages/Signup.php">Create an account</a>
                             </fieldset>
                         </form>
                     </div>
