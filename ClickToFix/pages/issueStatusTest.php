@@ -29,6 +29,16 @@
     }
 ?>
 
+<?php	
+	$sql = "SELECT image FROM images WHERE image_id=2"; 	
+	$query = mysqli_query($db, $sql) or die(mysqli_error($db));
+	$row = mysqli_fetch_assoc($query);
+
+    $image = $row['image'];
+    $image = base64_encode($image);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,6 +147,13 @@
                         
                             <br><br><br>
                             <button id="logoutbtn" onclick="logout()" class="btn btn-lg btn-success btn-block">Log Out</button>
+                        
+                            <br><br><br><br>
+                            <p>Image Test!!!!#@#@#</p>
+                            <br>
+                            <?php
+                                echo '<img src="data:image/jpg;base64,'.$image.'" style="width:280px">'
+                            ?>
                         </h3>
                     </div>
                 </div>
