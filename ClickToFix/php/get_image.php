@@ -22,7 +22,7 @@ function showImage($id)
 	
 		$imageData = $row['image'];
 		$imageData = base64_encode($imageData);
-		echo '<img src="data:image/jpeg;base64,'.$imageData.'" height = "928" width="1024"/>';
+		echo '<img src="data:image/jpeg;base64,'.$imageData.'"/>';
 	
 	}
 	
