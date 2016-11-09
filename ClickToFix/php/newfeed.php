@@ -33,22 +33,22 @@
                     $sqlid = "SELECT id FROM issues ORDER BY id DESC";
                     $queryid = mysqli_query($db, $sqlid);
 
-
-
-                    $displayQry = "SELECT image FROM images ORDER BY image_id";
-                            
-
-                            
-                    $sqlimage = mysqli_query($db, $displayQry);
-                            
-
-                    $sqlbuild = "SELECT loc FROM issues ORDER BY id DESC";
+                    $sqlbuild = "SELECT location FROM issues ORDER BY id DESC";
                     $querybuild = mysqli_query($db, $sqlbuild);
+
+                    
+
+                    $displayQry = "SELECT image FROM images ORDER BY image_id DESC";            
+                    $queryimage = mysqli_query($db, $displayQry);
+                            
+
+
+
+                    
 
                    /* $sqlimg = "SELECT image FROM issues ORDER BY id DESC";
                     $queryimg = mysqli_query($db, $sqlimg);
 */
-
                         //Function to convert the timedat format from php into "Ago Time" ie. "4 hours ago"
 
                         function get_timeago( $ptime ){
@@ -81,17 +81,7 @@
                         }
 
                         //function showImage($id){
-                        
-
-                            //echo "test";
-                           
-                            
-
-                            
-
-
-                          
-                             
+                            //echo "test";             
                        // }
                         
                         //$datamsg = mysqli_fetch_assoc($querymsg);
@@ -106,9 +96,11 @@
                         
                         $datatime = mysqli_fetch_assoc($querytime);
                         
+                        $dataLoc = mysqli_fetch_assoc($querybuild);
+                        //$dataloc = mysqli_fetch_assoc($querybuild);
                         //$dataimg = mysqli_fetch_assoc($queryimg);
                     
-                        $row = mysqli_fetch_assoc($sqlimage);
+                        $row = mysqli_fetch_assoc($queryimage);
                     
                     
                         $name = nl2br($fetch['name']);//New Line Break
@@ -116,13 +108,15 @@
                         $msg = nl2br($datamsg['message']);//New Line Break
                         
                         $time = nl2br($datatime['datetime']);//New Line Break
-
+                        $Location = $dataLoc['location'];
+                    
+                        
                         
                         $timeago = get_timeago(strtotime($time));
                    
                         
                     
-                        $imageData = nl2br($row['image']);
+                        $imageData = $row['image'];
                         $imgData = base64_encode($imageData);
                     
                         
@@ -136,10 +130,14 @@
                         
                         echo " <div class='panel-body'> $msg </div>";
                     
-                        echo "<img src='data:image/jpeg;base64,".$imgData."' height='900 width='1024'/>";
-                        //echo '<img src="data:image/jpeg;base64,'.$imageData.'" height = "928" width="1024"/>';
+                       // echo "<img src='data:image/jpeg;base64,".base64_encode($imageData)."' height='900 width='1024'/>";
+                        echo '<img src="data:image/jpeg;base64,'.$imgData.'" />';
                         
-                        echo "<div class='panel-footer'><strong>Posted: </strong> $timeago </div>";
+                        echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'align-right'>Issue(s) reported at:</strong> $Location</div>
+                        </div>";
+                    
+                        
+                    
                         echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button>";
                     
                         

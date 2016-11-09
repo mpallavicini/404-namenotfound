@@ -1,3 +1,13 @@
+nav.navbar.navbar-default.navbar-static-top{
+    border-bottom-color:#cc0000;
+    border-bottom-width: 2.5px;
+}
+
+.align-right{
+    
+    text-align:right;
+    
+}
 .inside-well {
     max-height: 100%;
     max-width: 100%

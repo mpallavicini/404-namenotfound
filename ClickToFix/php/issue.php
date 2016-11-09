@@ -33,7 +33,7 @@
         $loc = $_POST['loc'];
         
         $sql = "INSERT INTO issues (message, name, location) VALUES('$_msg', '$name', '$loc')";
-     
+        
         //"INSERT INTO issues (rowsInTable1, rowsInTable2, rowsInTable3) VALUES('$variable1', '$variable2', '$variable3')"
         $query = mysqli_query($db, $sql);
 
