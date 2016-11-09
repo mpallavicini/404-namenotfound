@@ -1,5 +1,5 @@
-function deleteIssue(issueId) {
-    var ajax = ajaxObj("POST", "../php/delete.php");
+function mergeIssue(issueId1, issueId2) {
+    var ajax = ajaxObj("POST", "../php/merge.php");
     ajax.onreadystatechange = function() {
         if (ajaxReturn(ajax) == true) {
             if (ajax.responseText == "success") {
@@ -9,5 +9,5 @@ function deleteIssue(issueId) {
             }
         }
     }
-    ajax.send("i="+issueId);
+    ajax.send("i1="+issueId1+"&i2="+issueId2);
 }

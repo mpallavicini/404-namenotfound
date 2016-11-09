@@ -78,6 +78,7 @@
     <script src="../js/updateStatus.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/delete.js"></script>
+    <script src="../js/merge.js"></script>
     
     <?php
         require_once("../php/delete_confirm.php");
