@@ -131,7 +131,7 @@
                         echo " <div class='panel-body'> $msg </div>";
                     
                        // echo "<img src='data:image/jpeg;base64,".base64_encode($imageData)."' height='900 width='1024'/>";
-                        echo '<img src="data:image/jpeg;base64,'.$imgData.'" />';
+                        echo '<img class = "max" src="data:image/jpeg;base64,'.$imgData.'" />';
                         
                         echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'align-right'>Issue(s) reported at:</strong> $Location</div>
                         </div>";
