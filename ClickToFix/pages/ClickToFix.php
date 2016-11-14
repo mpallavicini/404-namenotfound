@@ -476,8 +476,9 @@
                                             <!--Locations of all the buildings-->
 											<select name="loc" class="form-control privacy-dropdown pull-left input-md">			
                                                 <option value="" disabled selected>Please Select Location</option>
-                                                <option value="Admissions" >Admissions</option>
-												<option value="Student Activities Center">Student Activities Center</option>
+                                                <option value="Use Geo Location" >Use Geo Location</option>
+						<option value="Admissions" >Admissions</option>
+						<option value="Student Activities Center">Student Activities Center</option>
                                                 <option value="Tom Oxley Athletic Center">Tom Oxley Athletic Center</option>
                                                 <option value="Administration, KR Williams">Administration, KR Williams</option>
                                                 <option value="Ritter Art Gallery">Ritter Art Gallery</option>
