@@ -35,14 +35,13 @@
 
                     $sqlbuild = "SELECT location FROM issues ORDER BY id DESC";
                     $querybuild = mysqli_query($db, $sqlbuild);
-
+                    
+                    $sqllikes = "SELECT likes FROM issues ORDER BY id DESC";            
+                    $querylikes = mysqli_query($db, $sqllikes);
                     
 
                     $displayQry = "SELECT image FROM images ORDER BY image_id DESC";            
                     $queryimage = mysqli_query($db, $displayQry);
-                            
-
-
 
                     
 
@@ -90,6 +89,11 @@
                         $variableId=0;
                 while ($fetch = mysqli_fetch_assoc($query))
                 {
+                    
+                        $dataid = mysqli_fetch_assoc($queryid);    
+                    
+                        $datalikes = mysqli_fetch_assoc($querylikes);
+                    
                        // $dataname = mysqli_fetch_assoc($query);
                             
                         $datamsg = mysqli_fetch_assoc($querymsg);
@@ -102,6 +106,9 @@
                     
                         $row = mysqli_fetch_assoc($queryimage);
                     
+                        $id = $dataid['id'];
+                    
+                        $likes = $datalikes['likes'];
                     
                         $name = nl2br($fetch['name']);//New Line Break
                         
@@ -138,8 +145,18 @@
                     
                         
                     
-                        echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button>";
+                        echo "<button class= 'panel-body' onclick='toggleComment(`comment_$variableId`)' id='comment_$variableId'>Comment</button>";
                     
+                        echo "<div class='container'><div class='row'>";
+                        echo "<div class='col-sm-4'>";
+                        echo "<span class='panel-body' id='vote_$variableId'>Likes: $likes</span>";
+                        echo "</div>";
+                        echo "<div class='col-sm-4'>";
+                        echo "<button class='panel-body' onclick='vote($variableId, $id, 1)'>+</button>";
+                        echo "<button class='panel-body' onclick='vote($variableId, $id, 0)'>-</button>";
+                        echo "</div></div></div>";
+                    
+                        echo "<span class='panel-body' id='status_$variableId'></span>";
                         
                     
                      //   echo '<dt><strong>Technician Image:</strong></dt><dd>'
