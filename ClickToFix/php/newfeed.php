@@ -17,32 +17,13 @@
 <?php
                     include_once("../php/db_connect.php");  //connect to database
                     date_default_timezone_set("America/New_York");
-
-                    $sql = "SELECT name FROM issues ORDER BY id DESC"; 
-                    $query = mysqli_query($db, $sql); 
-                    //$dataname = mysqli_fetch_array($query);
-
-                    $sqlmsg = "SELECT message FROM issues ORDER BY id DESC"; 
-                    $querymsg = mysqli_query($db, $sqlmsg);
-                    //$datamsg = mysqli_fetch_array($querymsg);
-                        
-                    $sqltime = "SELECT datetime FROM issues ORDER BY id DESC"; 
-                    $querytime = mysqli_query($db, $sqltime);
-                    //$datatime = mysqli_fetch_array($querytime);
-                        
-                    $sqlid = "SELECT id FROM issues ORDER BY id DESC";
-                    $queryid = mysqli_query($db, $sqlid);
-
-                    $sqlbuild = "SELECT location FROM issues ORDER BY id DESC";
-                    $querybuild = mysqli_query($db, $sqlbuild);
                     
-                    $sqllikes = "SELECT likes FROM issues ORDER BY id DESC";            
-                    $querylikes = mysqli_query($db, $sqllikes);
-                    
+
+                    $sql = "SELECT id, name, message, datetime, location, likes FROM issues ORDER BY id DESC";
+                    $query = mysqli_query($db, $sql);
 
                     $displayQry = "SELECT image FROM images ORDER BY image_id DESC";            
                     $queryimage = mysqli_query($db, $displayQry);
-
                     
 
                    /* $sqlimg = "SELECT image FROM issues ORDER BY id DESC";
@@ -87,36 +68,26 @@
                         
                         //$datatime = mysqli_fetch_assoc($querytime);
                         $variableId=0;
-                while ($fetch = mysqli_fetch_assoc($query))
+                while ($data = mysqli_fetch_assoc($query))
                 {
                     
-                        $dataid = mysqli_fetch_assoc($queryid);    
+                        $id = $data['id'];    
                     
-                        $datalikes = mysqli_fetch_assoc($querylikes);
+                        $likes = $data['likes'];
                     
                        // $dataname = mysqli_fetch_assoc($query);
-                            
-                        $datamsg = mysqli_fetch_assoc($querymsg);
-                        
-                        $datatime = mysqli_fetch_assoc($querytime);
-                        
-                        $dataLoc = mysqli_fetch_assoc($querybuild);
+                                                                            
                         //$dataloc = mysqli_fetch_assoc($querybuild);
                         //$dataimg = mysqli_fetch_assoc($queryimg);
                     
                         $row = mysqli_fetch_assoc($queryimage);
                     
-                        $id = $dataid['id'];
-                    
-                        $likes = $datalikes['likes'];
-                    
-                        $name = nl2br($fetch['name']);//New Line Break
+                        $name = nl2br($data['name']);//New Line Break
                         
-                        $msg = nl2br($datamsg['message']);//New Line Break
+                        $msg = nl2br($data['message']);//New Line Break
                         
-                        $time = nl2br($datatime['datetime']);//New Line Break
-                        $Location = $dataLoc['location'];
-                    
+                        $time = nl2br($data['datetime']);//New Line Break
+                        $Location = $data['location'];
                         
                         
                         $timeago = get_timeago(strtotime($time));
