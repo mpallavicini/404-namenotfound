@@ -19,24 +19,26 @@
         
         $sql = "";
         if ($v == 1) {
-            if ($data['liked'] == 0) {
+            if ($data['liked'] != 1) {
                 $sql = "UPDATE issues SET likes = likes + 1 WHERE id = $id";  //Update likes on database
             } else {
-                echo "You already liked this issue!";
-                exit();
+                $sql = "UPDATE issues SET likes = likes - 1 WHERE id = $id";
             }
         } else if ($v == 0) {
-            if ($data['liked'] == 1) {
+            if ($data['liked'] != -1) {
                 $sql = "UPDATE issues SET likes = likes - 1 WHERE id = $id";
             } else {
-                echo "You did not vote for this issue yet!";
-                exit();
+                $sql = "UPDATE issues SET likes = likes + 1 WHERE id = $id";
             }
         } else {
             echo "fail";
             exit();
         }
         $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        
+        if ($v == 0) {
+            $v = -1;
+        }
         
         if ($related) {
             $sql = "UPDATE users_likes SET liked=$v WHERE user_id=$userId AND issue_id=$id";
