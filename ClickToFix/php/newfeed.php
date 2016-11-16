@@ -19,11 +19,8 @@
                     date_default_timezone_set("America/New_York");
                     
 
-                    $sql = "SELECT id, name, message, datetime, location, likes FROM issues ORDER BY id DESC";
+                    $sql = "SELECT id, name, image, message, datetime, location, likes FROM issues ORDER BY id DESC";
                     $query = mysqli_query($db, $sql);
-
-                    $displayQry = "SELECT image FROM images ORDER BY image_id DESC";            
-                    $queryimage = mysqli_query($db, $displayQry);
                     
 
                    /* $sqlimg = "SELECT image FROM issues ORDER BY id DESC";
@@ -79,9 +76,7 @@
                                                                             
                         //$dataloc = mysqli_fetch_assoc($querybuild);
                         //$dataimg = mysqli_fetch_assoc($queryimg);
-                    
-                        $row = mysqli_fetch_assoc($queryimage);
-                    
+                                        
                         $name = nl2br($data['name']);//New Line Break
                         
                         $msg = nl2br($data['message']);//New Line Break
@@ -94,7 +89,7 @@
                    
                         
                     
-                        $imageData = $row['image'];
+                        $imageData = $data['image'];
                         $imgData = base64_encode($imageData);
                     
                         

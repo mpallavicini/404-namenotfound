@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once("../php/logincheck.php");
+    include_once ("../php/issue.php");
 ?>
 
 <!DOCTYPE html>
@@ -400,7 +401,7 @@
         
         
 
-		<form id ="upload" action="../php/issue.php" method="post"  enctype="multipart/form-data" class="facebook-share-box">
+		<form id ="upload" action="../pages/ClickToFix.php" method="post"  enctype="multipart/form-data" class="facebook-share-box">
 			
 			
 			<div class="share">
@@ -409,7 +410,7 @@
                       <div class="panel-heading"><i class="fa fa-file"></i> Post an Issue</div>
                       <div class="panel-body">
                         <div class="padding-issue-name">
-                            <textarea name = "issueName" cols = "30" rows= "1" id = "status_message" class = "form-control message"  placeholder = "Issue Name e.g. Broken Light"></textarea>
+                            <textarea name = "issueName" cols = "30" rows= "1" id = "status_name" class = "form-control message"  placeholder = "Issue Name e.g. Broken Light" required></textarea>
                             
                            <script> function required(message) 
                                 {
@@ -422,7 +423,7 @@
                                     } 
 
                                </script>
-                            <textarea name="message" cols="30" rows="4" id="status_message" placeholder= "Description of Issue" class="form-control message"></textarea> 
+                            <textarea name="message" cols="30" rows="4" id="status_message" placeholder= "Description of Issue" class="form-control message" required></textarea> 
 						</div>
                       </div>
 						<div class="panel-footer">
@@ -436,7 +437,7 @@
                                                 <div class="input-group">
                                        
                                        
-                            <input id = "fileInput" class = "btn btn-default" type="file" name="fileInput" >
+                            <input id = "fileInput" class = "btn btn-default" type="file" name="fileInput" required>
                                     </div>
                                                 
                                 <script>
@@ -476,7 +477,7 @@
 									<div class="col-md-5">
 										<div class="form-group">
                                             <!--Locations of all the buildings-->
-											<select name="loc" class="form-control privacy-dropdown pull-left input-md">			
+											<select name="loc" id="status_loc" class="form-control privacy-dropdown pull-left input-md" required>			
                                                 <option value="" disabled selected>Please Select Location</option>
                                                 <option value="Use Geo Location" >Use Geo Location</option>
 						                      <option value="Admissions" >Admissions</option>
@@ -529,7 +530,7 @@
                                                 <option value="Indian River Towers">Indian River Towers</option>
                                            
 											</select>                                   
-											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn right btn-primary"> 
+											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn right btn-primary" required> 
                                             <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
                                             
                                            <script> 
@@ -637,6 +638,14 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+    
+    <script>
+    $(document).ready(function() {
+        debugger;
+        this.getElementById('status_name').value = "<?php echo $name;?>";
+        this.getElementById('status_message').value = "<?php echo $message;?>";
+    });
+</script>
 </body>
 
 </html>

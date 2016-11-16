@@ -2,27 +2,10 @@
     include_once("../php/db_connect.php");
     
 //should be inside of the if statement which checks empty title and and post
-    $file = $_FILES['fileInput']['tmp_name'];
-
-    if (!isset($file)) {
-        echo "Please select an image";
-    }
-    else {
-        $image = file_get_contents($_FILES['fileInput']['tmp_name']);
-        $imageName = $_FILES['fileInput']['name'];
-        $imageSize = getimagesize($_FILES['fileInput']['tmp_name']);
-
-        if ($imageSize == FALSE) {
-            echo "It is not an image";
-        } else {
-            $image = mysqli_real_escape_string($db, $image);
-            $insertImage = "INSERT INTO images (name, image) VALUES ('{$imageName}','{$image}')";
-            mysqli_query($db,$insertImage) or die(mysqli_error($db));
-        }
-    }
-
+  
+if(isset($_POST['issueName'])){
     //Checking to see if the Post is sent
-    if(empty($_POST['issueName'] && $_POST['message'] && $_POST['loc'])== false)  //Make sure that issueName and message is filled out in ClicktoFix
+    if(empty($_POST['issueName'] && $_POST['message'] && $_POST['loc']) == false)  //Make sure that issueName and message is filled out in ClicktoFix
     { 
         $msg =  $_POST['message']; //passing variable 'msg' the value from 'message' form entered by user
         $_msg = addslashes($msg);
@@ -32,30 +15,43 @@
         $_name = addslashes($name);
         $loc = $_POST['loc'];
         
-        $sql = "INSERT INTO issues (message, name, location) VALUES('$_msg', '$name', '$loc')";
+        //Picture part HERE  
+          $file = $_FILES['fileInput']['tmp_name'];
+    } else {
+        echo "<script type='text/javascript'>alert('Please enter the issue name and description');</script>";
+        
+    }
+
+    if (!$file) {
+        echo "<script type='text/javascript'>alert('Please select an image');</script>";
+
+    }
+    else {
+        $image = file_get_contents($file);
+        $imageName = $_FILES['fileInput']['name'];
+        $imageSize = getimagesize($file);
+
+        if ($imageSize == FALSE) {
+            echo "<script type='text/javascript'>alert('Select an Image');</script>";
+
+        } else {
+            $image = mysqli_real_escape_string($db, $image);
+            
+            $sql = "INSERT INTO issues (message, name, location, image) VALUES('$_msg', '$name', '$loc', '{$image}')";
         
         //"INSERT INTO issues (rowsInTable1, rowsInTable2, rowsInTable3) VALUES('$variable1', '$variable2', '$variable3')"
         $query = mysqli_query($db, $sql);
+    
 
-        if ($query === true) {
-            echo "Success";
-        } else {
-            echo "Fail";
-        }
-         
-        header("Location: ../index.html");
-         
-    } else{
-        // This is in the PHP file and sends a Javascript alert to the client
         
-
-
-        $message = "wrong answer";
-        echo '<script type="text/javascript">alert("Please enter the issue name and description");</script>';
-        
-        header("Location: ../index.html");
     }
+        
+         
+    }
+
+    
+    
+//header("Location: ../index.html");
+}
    
-   
-//exit();
 ?>

@@ -20,8 +20,8 @@ function geoFindMe() {
     output.appendChild(img);
   }
 
-  function error() {
-    output.innerHTML = "Unable to retrieve your location";
+  function error(err) {
+    output.innerHTML = err.message;
   }
 
   output.innerHTML = "<p>Locating…</p>";
