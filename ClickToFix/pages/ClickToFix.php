@@ -50,9 +50,7 @@
     <script src="../js/vote.js"></script>
     <script src="../js/jquery.js"></script>
     
-    
-   
-
+    <script src="../js/https_redirect.js"></script>
     
     
     

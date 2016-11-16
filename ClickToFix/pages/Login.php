@@ -26,6 +26,8 @@
     <script src="../js/ajax.js"></script>
     <script src="../js/misc.js"></script>
     <script src="../js/login.js"></script>
+    
+    <script src="../js/https_redirect.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
