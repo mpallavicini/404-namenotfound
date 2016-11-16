@@ -57,15 +57,18 @@ nav.navbar.navbar-default.navbar-static-top{
     text-align:left;
     font-size:20px;
     font-weight: 400;
+  
 }
 .panel-footer{
     
     margin-bottom: 20px;
     font-size:20px;
+   
 }
 .panel.body{
     font-size:19px;
     font-weight:400;
+  
 }
 .right {
     text-align:right;

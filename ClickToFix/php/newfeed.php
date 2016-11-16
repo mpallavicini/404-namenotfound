@@ -125,10 +125,10 @@
                         //'strtotime' converts the time into a string element so the function can mess with it
                         
                         
-                        echo  " <div class='panel-heading'><strong> $name </strong></div>";
-                    
+                        echo  "<div class='panel-heading'><strong> $name </strong></div>";
+                     
                         
-                        echo " <div class='panel-body'> $msg </div>";
+                        echo " <div class='panel-body'> $msg <i class='fa fa-thumbs-up' aria-hidden='true'></i><i class='fa fa-thumbs-down' aria-hidden='true'></i></div>";
                     
                        // echo "<img src='data:image/jpeg;base64,".base64_encode($imageData)."' height='900 width='1024'/>";
                         echo '<img class = "max" src="data:image/jpeg;base64,'.$imgData.'" />';
@@ -138,7 +138,7 @@
                     
                         
                     
-                        echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button>";
+                        echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button> ";
                     
                         
                     
