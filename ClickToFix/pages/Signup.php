@@ -22,6 +22,8 @@
         <script src="../js/ajax.js"></script>
         <script src="../js/misc.js"></script> 
         <script src="../js/signup.js"></script>
+        
+        <script src="../js/https_redirect.js"></script>
     </head>
 <body>
 
