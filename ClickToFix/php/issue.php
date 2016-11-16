@@ -1,7 +1,7 @@
 <?php 
     include_once("../php/db_connect.php");
     
-
+//should be inside of the if statement which checks empty title and and post
     $file = $_FILES['fileInput']['tmp_name'];
 
     if (!isset($file)) {

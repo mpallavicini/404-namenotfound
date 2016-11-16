@@ -43,8 +43,10 @@
     <link href="../dist/css/style.css" rel="stylesheet">
     <link href="../dist/css/my-css.css" rel="stylesheet">
     
+    <script src="../js/misc.js"></script>
     <script src="../js/ajax.js"></script>
     <script src="../js/comment_issue.js"></script>
+    <script src="../js/vote.js"></script>
     <script src="../js/jquery.js"></script>
     
     
@@ -438,7 +440,7 @@
                                     </div>
                                                 
                                 <script>
-                        $(function() {
+                        /*$(function() {
 /*
                           // We can attach the `fileselect` event to all file inputs on the page
                           $(document).on('change', ':file', function() {
@@ -476,8 +478,9 @@
                                             <!--Locations of all the buildings-->
 											<select name="loc" class="form-control privacy-dropdown pull-left input-md">			
                                                 <option value="" disabled selected>Please Select Location</option>
-                                                <option value="Admissions" >Admissions</option>
-												<option value="Student Activities Center">Student Activities Center</option>
+                                                <option value="Use Geo Location" >Use Geo Location</option>
+						                      <option value="Admissions" >Admissions</option>
+						                      <option value="Student Activities Center">Student Activities Center</option>
                                                 <option value="Tom Oxley Athletic Center">Tom Oxley Athletic Center</option>
                                                 <option value="Administration, KR Williams">Administration, KR Williams</option>
                                                 <option value="Ritter Art Gallery">Ritter Art Gallery</option>
@@ -633,8 +636,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-
-    <script src="js/ajax.js"></script>
 
 </body>
 

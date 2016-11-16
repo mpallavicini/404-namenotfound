@@ -1,44 +1,60 @@
 <?php
-    include_once("db_connect.php");  //connect to database
+    session_start();
 
-    $sql = "SELECT likes FROM posts WHERE id = 1 LIMIT 1";  //Get amount of likes from database
-    $query = mysqli_query($db, $sql);
-    $data = mysqli_fetch_assoc($query);
-
-    $likes = $data["likes"];
-?>
-<?php
-    if (isset($_POST["v"])) { //Check for POSTS calls to this page 
-        
+    if (isset($_SESSION['userid']) && isset($_POST["v"])) { //Check for POSTS calls to this page 
         include_once("db_connect.php");  //connect to database
-        $v = $_POST["v"];        
         
-        if ($v == 1) {
-            $sql = "UPDATE posts SET likes = likes + 1 WHERE id = 1";  //Update likes on database
-        } else if ($v == 0) {
-            $sql = "UPDATE posts SET likes = likes - 1 WHERE id = 1";
-        } else {
-            $sql = "";
+        $userId = $_SESSION['userid'];
+        $v = $_POST["v"];      
+        $id = $_POST["i"];
+        
+        $sql = "SELECT liked FROM users_likes WHERE issue_id=$id AND user_id=$userId";
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        $data = mysqli_fetch_assoc($query);
+        
+        $related = false;
+        if (mysqli_num_rows($query) > 0) {
+            $related = true;
         }
-        $query = mysqli_query($db, $sql);
         
-        if ($query === true) {
-
+        $sql = "";
+        if ($v == 1) {
+            if ($data['liked'] == 0) {
+                $sql = "UPDATE issues SET likes = likes + 1 WHERE id = $id";  //Update likes on database
+            } else {
+                echo "You already liked this issue!";
+                exit();
+            }
+        } else if ($v == 0) {
+            if ($data['liked'] == 1) {
+                $sql = "UPDATE issues SET likes = likes - 1 WHERE id = $id";
+            } else {
+                echo "<div class = 'panel-footer'>You did not vote for this issue yet!</div>";
+                exit();
+            }
         } else {
-            echo "Update Query failed where v=".$v;
+            echo "fail";
             exit();
         }
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
         
-        $sql = "SELECT likes FROM posts WHERE id = 1 LIMIT 1";  //Get amount of likes
-        $query = mysqli_query($db, $sql);
+        if ($related) {
+            $sql = "UPDATE users_likes SET liked=$v WHERE user_id=$userId AND issue_id=$id";
+        } else {
+            $sql = "INSERT INTO users_likes(user_id, issue_id, liked) VALUES($userId, $id, $v)";
+        }
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        
+        $sql = "SELECT likes FROM issues WHERE id = $id LIMIT 1";
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
         $data = mysqli_fetch_assoc($query);
         
         if (count($data) == 0) {
-            echo "No table row found.";
+            echo "Issue not found!";
             exit();
         }
         
-        echo $data["likes"];  //echo back to vote.js ajax return function
+        echo 'success', '<br>', $data["likes"];  //echo back to vote.js ajax return function
         exit();
     }
 ?>

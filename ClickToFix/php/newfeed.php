@@ -17,33 +17,13 @@
 <?php
                     include_once("../php/db_connect.php");  //connect to database
                     date_default_timezone_set("America/New_York");
-
-                    $sql = "SELECT name FROM issues ORDER BY id DESC"; 
-                    $query = mysqli_query($db, $sql); 
-                    //$dataname = mysqli_fetch_array($query);
-
-                    $sqlmsg = "SELECT message FROM issues ORDER BY id DESC"; 
-                    $querymsg = mysqli_query($db, $sqlmsg);
-                    //$datamsg = mysqli_fetch_array($querymsg);
-                        
-                    $sqltime = "SELECT datetime FROM issues ORDER BY id DESC"; 
-                    $querytime = mysqli_query($db, $sqltime);
-                    //$datatime = mysqli_fetch_array($querytime);
-                        
-                    $sqlid = "SELECT id FROM issues ORDER BY id DESC";
-                    $queryid = mysqli_query($db, $sqlid);
-
-                    $sqlbuild = "SELECT location FROM issues ORDER BY id DESC";
-                    $querybuild = mysqli_query($db, $sqlbuild);
-
                     
+
+                    $sql = "SELECT id, name, message, datetime, location, likes FROM issues ORDER BY id DESC";
+                    $query = mysqli_query($db, $sql);
 
                     $displayQry = "SELECT image FROM images ORDER BY image_id DESC";            
                     $queryimage = mysqli_query($db, $displayQry);
-                            
-
-
-
                     
 
                    /* $sqlimg = "SELECT image FROM issues ORDER BY id DESC";
@@ -88,28 +68,26 @@
                         
                         //$datatime = mysqli_fetch_assoc($querytime);
                         $variableId=0;
-                while ($fetch = mysqli_fetch_assoc($query))
+                while ($data = mysqli_fetch_assoc($query))
                 {
+                    
+                        $id = $data['id'];    
+                    
+                        $likes = $data['likes'];
+                    
                        // $dataname = mysqli_fetch_assoc($query);
-                            
-                        $datamsg = mysqli_fetch_assoc($querymsg);
-                        
-                        $datatime = mysqli_fetch_assoc($querytime);
-                        
-                        $dataLoc = mysqli_fetch_assoc($querybuild);
+                                                                            
                         //$dataloc = mysqli_fetch_assoc($querybuild);
                         //$dataimg = mysqli_fetch_assoc($queryimg);
                     
                         $row = mysqli_fetch_assoc($queryimage);
                     
-                    
-                        $name = nl2br($fetch['name']);//New Line Break
+                        $name = nl2br($data['name']);//New Line Break
                         
-                        $msg = nl2br($datamsg['message']);//New Line Break
+                        $msg = nl2br($data['message']);//New Line Break
                         
-                        $time = nl2br($datatime['datetime']);//New Line Break
-                        $Location = $dataLoc['location'];
-                    
+                        $time = nl2br($data['datetime']);//New Line Break
+                        $Location = $data['location'];
                         
                         
                         $timeago = get_timeago(strtotime($time));
@@ -128,18 +106,33 @@
                         echo  "<div class='panel-heading'><strong> $name </strong></div>";
                      
                         
-                        echo " <div class='panel-body'> $msg <i class='fa fa-thumbs-up' aria-hidden='true'></i><i class='fa fa-thumbs-down' aria-hidden='true'></i></div>";
+                        echo " <div class='panel-body'> $msg </div>";
                     
                        // echo "<img src='data:image/jpeg;base64,".base64_encode($imageData)."' height='900 width='1024'/>";
                         echo '<img class = "max" src="data:image/jpeg;base64,'.$imgData.'" />';
                         
-                        echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'align-right'>Issue(s) reported at:</strong> $Location</div>
-                        </div>";
+                        echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'text-left'>Issue(s) reported at:</strong> $Location</div>";
+                    //  echo "<div class='container'><div class='row'>";
+                       // echo "<div class='panel-footer'>";
+                       
+                        //echo "</div>";
+                        echo "<div class='text-center panel-footer'>";
                     
+                        echo "<button class='block btn btn-lg' onclick='vote($variableId, $id, 1)'><i class='fa fa-thumbs-up' aria-hidden='true'></i></button>";
+                    
+                        echo "<span id='vote_$variableId'>$likes</span>";
+                    
+                        echo "<button class='block btn btn-lg' onclick='vote($variableId, $id, 0)'><i class='fa fa-thumbs-down' aria-hidden='true'></i> </button> </div>";
+                        echo "</div>";//</div>";//</div>";
+
+                    
+                        echo "<span class='panel-body' id='status_$variableId'></span>";
                         
                     
-                        echo "<button class= 'panel-body' onclick='toggleComment(`comment$variableId`)' id='comment$variableId'>Comment</button> ";
+
+                        echo "<button class= 'panel-body' onclick='toggleComment(`comment_$variableId`)' id='comment_$variableId'>Comment</button>";
                     
+                      
                         
                     
                      //   echo '<dt><strong>Technician Image:</strong></dt><dd>'
