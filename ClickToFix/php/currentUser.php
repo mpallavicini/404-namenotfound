@@ -29,5 +29,20 @@ function currentUserFullname()
     echo $row['firstname']." ".$row['lastname'];
 
 }
+
+
+function userNameByEmail($email)
+{
+    require("db_connect.php");
+
+    $sql = "SELECT firstname, lastname FROM users WHERE email='$email'";
+    
+    $result = mysqli_query($db, $sql)  or die('SQL Error :: '.mysql_error());
+    
+    $row = mysqli_fetch_assoc($result);
+
+    return $row['firstname']." ".$row['lastname'];
+
+}
     
 ?>
