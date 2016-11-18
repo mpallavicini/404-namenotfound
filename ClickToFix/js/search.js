@@ -110,7 +110,7 @@ function search(value) {
                     elements += "<button class='panel-body' onclick='vote(" + i + ", " + id + ", 1)'>+</button>";
                     elements += "<button class='panel-body' onclick='vote(" + i + ", " + id + ", 0)'>-</button>";
                     elements += "</div></div></div>";
-                    
+                     
                     elements += "<span class='panel-body' id='status_" + i + "'></span>";
                     
                     elements += "<hr>";

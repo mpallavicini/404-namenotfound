@@ -184,4 +184,9 @@ input.form-control{
         width: 100%;
     }
 }
-
+.white{
+    color:white;
+    text-align:right;
+    padding-right:10px;
+    
+}
