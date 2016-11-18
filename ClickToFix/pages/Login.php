@@ -30,7 +30,7 @@
     <script src="../js/https_redirect.js"></script>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -40,7 +40,9 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+<link href = "../dist/css/my-css.css" rel = "stylesheet" type = "text/css">
+    
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -54,7 +56,20 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class = "col-md-4 col-md-offset-4">
+            
+                <div class= "login-panel panel panel-default">
+                    <div class= "panel-heading">
+                        <h3 class="panel-title">Hello</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h1>Click To Fix is a website designed and implemented by FAU students.  The purpose of lickToFix is to let the university administatraion know if there are any issues on campus that need to be addressed.</h1>
+                    </div>
+                
+                </div>
+            
+            </div>
+            <div class="right-align col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
