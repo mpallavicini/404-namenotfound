@@ -15,21 +15,11 @@
 
 
 <?php
-                    session_start();
-
                     include_once("../php/db_connect.php");  //connect to database
                     date_default_timezone_set("America/New_York");
                     
-                    $sql = "SELECT user_permission FROM users WHERE user_no=".$_SESSION['userid'];
-                    $query = mysqli_query($db, $sql) or die(mysqli_error($db));
-                    $data = mysqli_fetch_array($query);
 
-                    $admin = false;
-                    if ($data[0] == 1) {
-                        $admin = true;
-                    }
-
-                    $sql = "SELECT id, name, message, datetime, location, likes FROM issues ORDER BY datetime DESC";
+                    $sql = "SELECT id, name, image, message, datetime, location, likes FROM issues ORDER BY id DESC";
                     $query = mysqli_query($db, $sql);
                     
 
@@ -96,7 +86,11 @@
                         
                         
                         $timeago = get_timeago(strtotime($time));
-
+                   
+                        
+                    
+                        $imageData = $data['image'];
+                        $imgData = base64_encode($imageData);
                     
                         
 //calling the Ago Time function and passing variable time from php database.
@@ -104,42 +98,36 @@
                         //'strtotime' converts the time into a string element so the function can mess with it
                         
                         
-                        echo "<div class='row'><div class='col-md-9'>";
-                    
-                        echo  "<div class='panel-heading'>";
-                        if ($admin) {
-                            echo "<input type='checkbox' name='checkbox' value='$id'>";
-                        }
-                        echo "<strong> $name </strong></div>";
-                    
+                        echo  "<div class='panel-heading'><strong> $name </strong></div>";
+                     
                         
-                        echo "<div class='panel-body'> $msg </div>";
-                    
-                    
-                        echo "</div><div class='col-md-2'>";    
+                        echo " <div class='panel-body'> $msg </div>";
                     
                        // echo "<img src='data:image/jpeg;base64,".base64_encode($imageData)."' height='900 width='1024'/>";
-                        echo '<img class="max" id="image_'.$id.'" src="../img/Loading_icon.gif" />';
-                    
-                        echo "</div></div>";
+                        echo '<img class = "max" src="data:image/jpeg;base64,'.$imgData.'" />';
                         
-                        echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'align-right'>Issue(s) reported at:</strong> $Location</div>
-                        </div>";
+                        echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'text-left'>Issue(s) reported at:</strong> $Location</div>";
+                    //  echo "<div class='container'><div class='row'>";
+                       // echo "<div class='panel-footer'>";
+                       
+                        //echo "</div>";
+                        echo "<div class='text-center panel-footer'>";
                     
-                        
+                        echo "<button class='block btn btn-lg' onclick='vote($variableId, $id, 1)'><i class='fa fa-thumbs-up' aria-hidden='true'></i></button>";
                     
-                        echo "<button class= 'panel-body' onclick='toggleComment(`comment_$variableId`)' id='comment_$variableId'>Comment</button>";
+                        echo "<span id='vote_$variableId'>$likes</span>";
                     
-                        echo "<div class='container'><div class='row'>";
-                        echo "<div class='col-sm-4'>";
-                        echo "<span class='panel-body' id='vote_$variableId'>Likes: $likes</span>";
-                        echo "</div>";
-                        echo "<div class='col-sm-4'>";
-                        echo "<button class='panel-body' onclick='vote($variableId, $id, 1)'>+</button>";
-                        echo "<button class='panel-body' onclick='vote($variableId, $id, 0)'>-</button>";
-                        echo "</div></div></div>";
+                        echo "<button class='block btn btn-lg' onclick='vote($variableId, $id, 0)'><i class='fa fa-thumbs-down' aria-hidden='true'></i> </button> </div>";
+                        echo "</div>";//</div>";//</div>";
+
                     
                         echo "<span class='panel-body' id='status_$variableId'></span>";
+                        
+                    
+
+                        echo "<button class= 'panel-body' onclick='toggleComment(`comment_$variableId`)' id='comment_$variableId'>Comment</button>";
+                    
+                      
                         
                     
                      //   echo '<dt><strong>Technician Image:</strong></dt><dd>'

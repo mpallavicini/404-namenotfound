@@ -7,7 +7,7 @@ function vote(elementId, issueId, vote) {
             if (success != "success") {
                 _("status_" + elementId).innerHTML = ajax.responseText;
             } else {
-                _("vote_" + elementId).innerHTML = "Likes: " + response;
+                _("vote_" + elementId).innerHTML = response;
             }
         }
     }
