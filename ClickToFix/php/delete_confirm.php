@@ -26,8 +26,8 @@
       $(this).find('.modal-title').text($title);
   });
 
-  $('#confirmDelete').find('.modal-footer #confirm').on('click', function(){
-      deleteIssue(<?php echo $issueId; ?>);
+  $('#confirmDelete').find('.modal-footer #confirm').on('click', function() {
+      deleteIssue();
       $(this).attr('data-dismiss', 'modal');
   });
 </script>

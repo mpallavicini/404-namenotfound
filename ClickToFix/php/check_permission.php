@@ -12,7 +12,7 @@
     $user_permission = $data["user_permission"];
 
     if ($user_permission != 1) {
-        echo "No permission to change this.";
+        echo "Permission denied!";
         exit();
     }
 ?>

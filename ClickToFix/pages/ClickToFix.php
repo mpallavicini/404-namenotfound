@@ -49,11 +49,17 @@
     <script src="../js/comment_issue.js"></script>
     <script src="../js/vote.js"></script>
     <script src="../js/jquery.js"></script>
-    
+        
     <script src="../js/https_redirect.js"></script>
     
+    <script src="../js/delete.js"></script>
+    <script src="../js/merge.js"></script>
+    <script src="../js/search.js"></script>
     
-    
+    <?php
+        require_once("../php/delete_confirm.php");
+        require_once("../php/merge_confirm.php");
+    ?>   
     
     
     <!-- Custom Fonts -->
@@ -68,7 +74,19 @@
 </head>
 
 <body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
 
+      <!-- The Close Button -->
+      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+      <!-- Modal Content (The Image) -->
+      <img class="modal-content" id="img01" src="">
+
+      <!-- Modal Caption (Image Text) -->
+      <div id="caption"></div>
+    </div>
+    
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -304,9 +322,9 @@
                                 
                                 <!--SEARCH DATABASE MAYBE-->
                                 
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" id="search_field" class="form-control" onkeyup="searchKeyUp(event)" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
+                                <button class="btn btn-default" type="button" onclick="search(_('search_field').value)">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
@@ -558,25 +576,23 @@
                 
                 
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default"><!--
                           <script>
                         $(document).ready(function(){
                         //$("#loader").hide();
                         
                         $("#feed").load("../php/newfeed.php");
                         
-                            
-                        
                     });               
-                    </script>
-                        
+                    </script>!-->
+                        <div id="loader" >Loading.....</div>
                         <div  id="feed">
-                            <div class="panel-footer">
-                            <button onclick="toggleComment('comment1')">Comment</button>
+                            <!-- <div class="panel-footer">
+                             <button onclick="toggleComment('comment1')">Comment</button>>
                             
-                        </div>
+                        </div> !-->
                             
-                            <div id="loader" >Loading.....</div>
+                            
                             
                             
                         
@@ -635,15 +651,10 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    
+    <script>search('');</script>
 
     
-    <script>
-    $(document).ready(function() {
-        debugger;
-        this.getElementById('status_name').value = "<?php echo $name;?>";
-        this.getElementById('status_message').value = "<?php echo $message;?>";
-    });
-</script>
 </body>
 
 </html>
