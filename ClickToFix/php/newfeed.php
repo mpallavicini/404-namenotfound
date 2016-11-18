@@ -15,15 +15,22 @@
 
 
 <?php
+                    session_start();
+
                     include_once("../php/db_connect.php");  //connect to database
                     date_default_timezone_set("America/New_York");
                     
+                    $sql = "SELECT user_permission FROM users WHERE user_no=".$_SESSION['userid'];
+                    $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+                    $data = mysqli_fetch_array($query);
 
-                    $sql = "SELECT id, name, message, datetime, location, likes FROM issues ORDER BY id DESC";
+                    $admin = false;
+                    if ($data[0] == 1) {
+                        $admin = true;
+                    }
+
+                    $sql = "SELECT id, name, message, datetime, location, likes FROM issues ORDER BY datetime DESC";
                     $query = mysqli_query($db, $sql);
-
-                    $displayQry = "SELECT image FROM images ORDER BY image_id DESC";            
-                    $queryimage = mysqli_query($db, $displayQry);
                     
 
                    /* $sqlimg = "SELECT image FROM issues ORDER BY id DESC";
@@ -79,9 +86,7 @@
                                                                             
                         //$dataloc = mysqli_fetch_assoc($querybuild);
                         //$dataimg = mysqli_fetch_assoc($queryimg);
-                    
-                        $row = mysqli_fetch_assoc($queryimage);
-                    
+                                        
                         $name = nl2br($data['name']);//New Line Break
                         
                         $msg = nl2br($data['message']);//New Line Break
@@ -91,11 +96,7 @@
                         
                         
                         $timeago = get_timeago(strtotime($time));
-                   
-                        
-                    
-                        $imageData = $row['image'];
-                        $imgData = base64_encode($imageData);
+
                     
                         
 //calling the Ago Time function and passing variable time from php database.
@@ -103,13 +104,24 @@
                         //'strtotime' converts the time into a string element so the function can mess with it
                         
                         
-                        echo  " <div class='panel-heading'><strong> $name </strong></div>";
+                        echo "<div class='row'><div class='col-md-9'>";
+                    
+                        echo  "<div class='panel-heading'>";
+                        if ($admin) {
+                            echo "<input type='checkbox' name='checkbox' value='$id'>";
+                        }
+                        echo "<strong> $name </strong></div>";
                     
                         
-                        echo " <div class='panel-body'> $msg </div>";
+                        echo "<div class='panel-body'> $msg </div>";
+                    
+                    
+                        echo "</div><div class='col-md-2'>";    
                     
                        // echo "<img src='data:image/jpeg;base64,".base64_encode($imageData)."' height='900 width='1024'/>";
-                        echo '<img class = "max" src="data:image/jpeg;base64,'.$imgData.'" />';
+                        echo '<img class="max" id="image_'.$id.'" src="../img/Loading_icon.gif" />';
+                    
+                        echo "</div></div>";
                         
                         echo "<div class='panel-footer'><strong>Posted: </strong> $timeago<strong> <div class = 'align-right'>Issue(s) reported at:</strong> $Location</div>
                         </div>";

@@ -27,7 +27,7 @@
   });
 
   $('#confirmMerge').find('.modal-footer #confirm').on('click', function(){
-      mergeIssue(<?php echo "$issueId1,$issueId2"; ?>);
+      mergeIssue();
       $(this).attr('data-dismiss', 'modal');
   });
 </script>
