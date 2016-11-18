@@ -39,9 +39,27 @@
             $admin = true;
         }
         
-        $search = $_POST["s"];
+        $string = $_POST['s'];   
+        //seperating the string using explode function
+        $words = explode(" ",$string);
+
+        $wordCount = count($words);
+
+        $firstWord = "%".$words[0]."%";
+
+        $sql = "SELECT id, name, message, datetime, location, likes FROM issues WHERE (CONVERT( name USING utf8 ) LIKE '$firstWord') OR (CONVERT( message USING utf8 ) LIKE '$firstWord')";
+
+        if($wordCount>1)
+        {
+            for($i=1; $i<$wordCount; $i++)
+            {
+                $wordToConvert = "%".$words[$i]."%";
+                $sql .= "OR (CONVERT(  `name` USING utf8 ) LIKE '$wordToConvert') or (CONVERT( message USING utf8 ) LIKE '$firstWord')";
+            }
+        }
         
-        $sql = "SELECT id, name, message, datetime, location, likes FROM issues WHERE name LIKE '%".$search."%' OR message LIKE '%".$search."%' ORDER BY datetime DESC";
+        $sql .= " ORDER BY datetime DESC";
+        
         $query = mysqli_query($db, $sql) or die(mysqli_error($db));
         
         $ids = [];

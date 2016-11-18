@@ -50,6 +50,13 @@ function loadImages() {
     ajax.send("i="+dataIds[z]);
 }
 
+function searchKeyUp(event) {
+    var key = event.keyCode || event.which;
+    if (key == 13) {
+        search(_('search_field').value);
+    }
+}
+
 function search(value) {
     reload = true;
     

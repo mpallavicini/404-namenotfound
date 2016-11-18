@@ -19,20 +19,26 @@
         
         $sql = "";
         if ($v == 1) {
-            if ($data['liked'] != 1) {
+            if ($data['liked'] == 0) {
                 $sql = "UPDATE issues SET likes = likes + 1 WHERE id = $id";  //Update likes on database
                 $liked = 1;
-            } else {
+            } else if ($data['liked'] == 1) {
                 $sql = "UPDATE issues SET likes = likes - 1 WHERE id = $id";
                 $liked = 0;
+            } else {
+                $sql = "UPDATE issues SET likes = likes + 2 WHERE id = $id";
+                $liked = 1;
             }
         } else if ($v == 0) {
-            if ($data['liked'] != -1) {
+            if ($data['liked'] == 0) {
                 $sql = "UPDATE issues SET likes = likes - 1 WHERE id = $id";
                 $liked = -1;
-            } else {
+            } else if ($data['liked'] == -1) {
                 $sql = "UPDATE issues SET likes = likes + 1 WHERE id = $id";
                 $liked = 0;
+            } else {
+                $sql = "UPDATE issues SET likes = likes - 2 WHERE id = $id";
+                $liked = -1; 
             }
         } else {
             echo "fail";

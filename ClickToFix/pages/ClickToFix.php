@@ -322,7 +322,7 @@
                                 
                                 <!--SEARCH DATABASE MAYBE-->
                                 
-                                <input type="text" id="search_field" class="form-control" placeholder="Search...">
+                                <input type="text" id="search_field" class="form-control" onkeyup="searchKeyUp(event)" placeholder="Search...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" onclick="search(_('search_field').value)">
                                     <i class="fa fa-search"></i>
@@ -655,13 +655,6 @@
     <script>search('');</script>
 
     
-    <script>
-    $(document).ready(function() {
-        debugger;
-        this.getElementById('status_name').value = "<?php echo $name;?>";
-        this.getElementById('status_message').value = "<?php echo $message;?>";
-    });
-</script>
 </body>
 
 </html>
