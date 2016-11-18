@@ -1,7 +1,19 @@
 <?php 
     include_once("../php/db_connect.php");
-    
-//should be inside of the if statement which checks empty title and and post
+
+
+
+include_once("../php/db_connect.php");
+
+$username = $_SESSION['useremail'];
+$anonymous = 0;
+if(isset($_POST['anonymous']) && $_POST['anonymous'] == 'Yes') 
+    {
+    $anonymous = 1;
+    }
+echo $anonymous;
+
+
   
 if(isset($_POST['issueName'])){
     //Checking to see if the Post is sent
@@ -37,10 +49,13 @@ if(isset($_POST['issueName'])){
         } else {
             $image = mysqli_real_escape_string($db, $image);
             
-            $sql = "INSERT INTO issues (message, name, location, image) VALUES('$_msg', '$name', '$loc', '{$image}')";
+            //$sql = "INSERT INTO issues (message, name, location, image) VALUES('$_msg', '$name', '$loc', '{$image}')";
+            $sql = "INSERT INTO issues (message, name, location, image, user, anonymity) VALUES('$_msg', '$name', '$loc', '{$image}','$username','$anonymous')";
+
         
         //"INSERT INTO issues (rowsInTable1, rowsInTable2, rowsInTable3) VALUES('$variable1', '$variable2', '$variable3')"
-        $query = mysqli_query($db, $sql);
+    
+            $query = mysqli_query($db, $sql);
     
 
         
