@@ -16,7 +16,7 @@
     if (isset($_SESSION['useremail'])) {
         header("location: ../pages/Message.php?msg=Error:_Logout_Failed");
     } else {
-        header("location: ../pages/login.php");
+        header("location: ../pages/Login.php");
         exit();
     }
 ?>

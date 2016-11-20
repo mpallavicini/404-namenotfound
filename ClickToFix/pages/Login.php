@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Campus Snapshot Login</title>
+    <title>ClickToFix Login</title>
     
     <script src="../js/ajax.js"></script>
     <script src="../js/misc.js"></script>
@@ -40,7 +40,7 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href = "../dist/css/my-css.css" rel = "stylesheet" type = "text/css">
+    <link href = "../dist/css/my-css.css" rel = "stylesheet" type = "text/css">
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,16 +57,10 @@
     <div class="container">
         <div class="row">
             <div class = "col-md-4 col-md-offset-4">
-            
-                <div class= "login-panel panel panel-default">
-                    <div class= "panel-heading">
-                        <h3 class="panel-title">Hello</h3>
-                    </div>
-                    <div class="panel-body">
-                        <h1>Click To Fix is a website designed and implemented by FAU students.  The purpose of lickToFix is to let the university administatraion know if there are any issues on campus that need to be addressed.</h1>
-                    </div>
-                
-                </div>
+               
+                         <img class="mainlogo" src="../img/logo4.png">
+                        <!--<h5>Click To Fix is a website designed and implemented by FAU students.  The purpose of ClickToFix is to make the university administatraion aware of any issues on campus that need to be addressed.  Simply Click and everything will be Fixed!</h5>-->
+                    
             
             </div>
             <div class="right-align col-md-4 col-md-offset-4">

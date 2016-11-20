@@ -107,8 +107,8 @@ function search(value) {
                     elements += "<div class='col-sm-4'>";
                     elements += "<span class='panel-body' id='vote_" + i + "'>" + likes + "</span></div>";
                     elements += "<div class='col-sm-4'>";
-                    elements += "<button class='panel-body' onclick='vote(" + i + ", " + id + ", 1)'>+</button>";
-                    elements += "<button class='panel-body' onclick='vote(" + i + ", " + id + ", 0)'>-</button>";
+                    elements += "<button class='block btn btn-lg' onclick='vote(" + i + ", " + id + ", 1)'><i class='fa fa-thumbs-up' aria-hidden='true'></i></button>";
+                    elements += "<button class='btn btn-lg' onclick='vote(" + i + ", " + id + ", 0)'><i class='fa fa-thumbs-down' aria-hidden='true'></i></button>";
                     elements += "</div></div></div>";
                      
                     elements += "<span class='panel-body' id='status_" + i + "'></span>";
