@@ -84,6 +84,8 @@ function search(value) {
                     var time = data[6][i];
                     var location = data[7][i];
                     var likes = data[8][i];
+                    var anonymity = data[9][i];
+                    var user = data[10][i];
                     
                     elements += '<div class="row"><div class="col-md-9"><div class="panel-heading">';
                     if (data[2]) {
@@ -99,7 +101,7 @@ function search(value) {
                     
                     elements += "</div></div>";
                     
-                    elements += "<div class='panel-footer'><strong>Posted: </strong>" + time + "<strong> <div class='align-right'>Issue(s) reported at: </strong>" + location + "</div></div>";
+                    elements += "<div class='panel-footer'><strong>Posted By: </strong>" + user + "<strong><br></strong>" + time + "<strong> <div class='align-right'>Issue(s) reported at: </strong>" + location + "</div></div>";
                     
                     elements += "<button class= 'panel-body' onclick='toggleComment(`comment_" + i + "`)' id='comment_" + i + "'>Comment</button>";
                     
@@ -110,7 +112,7 @@ function search(value) {
                     elements += "<button class='block btn btn-lg' onclick='vote(" + i + ", " + id + ", 1)'><i class='fa fa-thumbs-up' aria-hidden='true'></i></button>";
                     elements += "<button class='btn btn-lg' onclick='vote(" + i + ", " + id + ", 0)'><i class='fa fa-thumbs-down' aria-hidden='true'></i></button>";
                     elements += "</div></div></div>";
-                     
+                    
                     elements += "<span class='panel-body' id='status_" + i + "'></span>";
                     
                     elements += "<hr>";
