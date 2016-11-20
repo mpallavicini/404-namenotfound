@@ -6,7 +6,7 @@ nav.navbar.navbar-default.navbar-static-top{
 }
 .max{
     
-    max-width:100%;
+    max-width:65%;
 }
 .align-right{
     
@@ -32,6 +32,8 @@ nav.navbar.navbar-default.navbar-static-top{
 .block{
     
     display:inline;
+    padding-right:4px;
+        padding-left:4px;
 }
 .word-color{
     color:white;
@@ -55,7 +57,9 @@ nav.navbar.navbar-default.navbar-static-top{
     margin-top: 17px;
     left: 50px;
 }
-
+.comment{
+    
+}
 .padding-issue-name {
     padding:10px;
 }
@@ -68,7 +72,7 @@ nav.navbar.navbar-default.navbar-static-top{
 }
 .panel-footer{
     
-    margin-bottom: 20px;
+   
     font-size:20px;
    
 }
@@ -79,13 +83,17 @@ nav.navbar.navbar-default.navbar-static-top{
 }
 .right {
     text-align:right;
-    
+    float:right;
     align-content:right;
     align-items: right;
+    clear:both;
+    display:block;
 }
 
 .form-control {
    border:solid .5px #eeeeee;
+    margin-bottom:5px;
+margin-right:5px;
 }
 input.form-control{
     background-color:#feffff;
@@ -202,4 +210,12 @@ input.form-control{
     display:block;
     margin-left:auto;
     margin-right:auto;
+}
+
+.font {
+    font-size:14px;
+}
+
+.pad {
+    padding:20px;
 }

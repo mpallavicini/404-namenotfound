@@ -87,30 +87,56 @@ function search(value) {
                     var anonymity = data[9][i];
                     var user = data[10][i];
                     
-                    elements += '<div class="row"><div class="col-md-9"><div class="panel-heading">';
+            elements +="<div class='row'>";
+                elements +="<div class='col-md-8'>";
+                    elements +="<div class='panel-heading'>";
                     if (data[2]) {
                         elements += "<input type='checkbox' name='checkbox' value='" + id + "'> ";
                     }
-                    elements += "<strong>" + name + "</strong></div>";
-                    
+                        elements += "<strong>" + name + "</strong>";
+                    elements +="</div>";//Ending of panel-heading div
+
                     elements += "<div class='panel-body'>" + message + "</div>";
-                    
-                    elements += "</div><div class='col-md-2'>";
-                    
+
+                elements += "</div>";//Ending of col-md-12 div
+
+                elements += "<div class='panel-body col-md-4'>";
+
                     elements += '<img class="max image_popup" alt="' + name + '" id="image_' + i + '" src="../img/Loading_icon.gif" />';
+
+                elements += "</div>";//Ending of Panel-body div
+             elements +="</div>";//Ending of row div
                     
-                    elements += "</div></div>";
+        elements += "<div class='col-md-8'>";
+            elements += "<div class='panel-footer'><strong>Posted By: </strong>" + user + "<strong></strong> " + time + "<strong>";
+                elements +="<div class='align-right'>Issue(s) reported at: </strong>" + location ;
+                    elements += "<div class= 'voting'>";
+                        elements +="<button class='btn btn-success btn-lg' onclick='vote(" + i + ", " + id + ", 1)'> <i class='fa fa-thumbs-up' aria-hidden='true'> </i> </button>";
+
+                        elements += "<span class='block' id='vote_" + i + "'>" + likes + "</span>";
+
+                        elements +="<button class='btn btn-danger btn-lg' onclick='vote(" + i + ", " + id + ", 0)'> <i class='fa fa-thumbs-down' aria-hidden='true'></i></button>";
+
+                        elements += "<button class= 'btn btn-warning btn-lg right' onclick='toggleComment(`comment_" + i + "`)' id='comment_" + i + "'>Comments</button>";
+
+                    elements +="</div>";//Ending of voting div
                     
-                    elements += "<div class='panel-footer'><strong>Posted By: </strong>" + user + "<strong><br></strong>" + time + "<strong> <div class='align-right'>Issue(s) reported at: </strong>" + location + "</div></div>";
+                elements +="</div>"; //Ending of align-right div
                     
-                    elements += "<button class= 'panel-body' onclick='toggleComment(`comment_" + i + "`)' id='comment_" + i + "'>Comment</button>";
+            elements += "</div>"; //Ending of panel-footer div
                     
-                    elements += "<div class='container'><div class='row'>";
-                    elements += "<div class='col-sm-4'>";
-                    elements += "<span class='panel-body' id='vote_" + i + "'>" + likes + "</span></div>";
-                    elements += "<div class='col-sm-4'>";
-                    elements += "<button class='block btn btn-lg' onclick='vote(" + i + ", " + id + ", 1)'><i class='fa fa-thumbs-up' aria-hidden='true'></i></button>";
-                    elements += "<button class='btn btn-lg' onclick='vote(" + i + ", " + id + ", 0)'><i class='fa fa-thumbs-down' aria-hidden='true'></i></button>";
+        elements +="</div>";//Ending of col-md-8 div
+
+                    
+                    
+                    
+                elements += "<div class='container'>";
+                     elements +="<div class='row'>";
+                        elements += "<div class='col-sm-4'>";
+                    
+                    //elements += "<div class='col-sm-4'>";
+                   // elements += "<button class='block btn btn-lg' onclick='vote(" + i + ", " + id + ", 1)'><i class='fa fa-thumbs-up' aria-hidden='true'></i></button>";
+                    //elements += "<button class='btn btn-lg' onclick='vote(" + i + ", " + id + ", 0)'><i class='fa fa-thumbs-down' aria-hidden='true'></i></button>";
                     elements += "</div></div></div>";
                     
                     elements += "<span class='panel-body' id='status_" + i + "'></span>";

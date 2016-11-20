@@ -76,11 +76,11 @@
 </head>
 
 <body>
-    <h3 class='white'>Welcome Back,
+    <h4 class='white'>Welcome Back,
         <?php
         echo userNameByEmail($_SESSION['useremail']);
         ?>
-    </h3>
+    </h4>
     
     
     <!-- The Modal -->
@@ -235,7 +235,7 @@
                         
                         <!-- UI ELEMENTS-->
                         <li >
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> About Us</a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>About Us</a>
                             
                                 
                             
@@ -348,7 +348,7 @@
 										</div>
 									</div>
 									<div class="col-md-5">
-										<div class="form-group">
+										<div class="right form-group">
                                             <!--Locations of all the buildings-->
 											<select name="loc" id="status_loc" class="form-control privacy-dropdown pull-left input-md" required>			
                                                 <option value="" disabled selected>Please Select Location</option>
@@ -402,10 +402,15 @@
                                                 <option value="Information Booth">Information Booth</option>
                                                 <option value="Indian River Towers">Indian River Towers</option>
                                            
-											</select>                                   
-											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn right btn-primary" required> 
+											</select>                                  
+											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn btn-primary" required> 
                                             <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
-                                            
+                                            <br>
+                                            <div class="right">
+    <label class="font">
+      <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
+    </label>
+  </div>
                                            <script> 
                                                function eraseText() {
                                                    document.getElementById("status_message").value = "";
@@ -413,9 +418,7 @@
                                             </script>
                                             
                                             
-
 										</div>
-                                        <input type= "checkbox" name="anonymous" value="Yes"/> Post Anonymously
                                         
 									</div>
 								</div>
@@ -448,12 +451,35 @@
                     </script>!-->
                         <div id="loader" >Loading.....</div>
                         <div  id="feed">
-                            <!-- <div class="panel-footer">
+                            <!-- <div class="comment panel-footer">
                              <button onclick="toggleComment('comment1')">Comment</button>>
                             
                         </div> !-->
                             
-                            
+                   <div class="row">
+                       <div class="col-md-6">
+                           <div class="panel-heading">
+                                <input type='checkbox' name='checkbox' value='" + id + "'> 
+                                <strong>name</strong>
+                           </div>
+                    
+                           <div class='panel-body'>" + message + "
+                           </div>
+                    
+                        </div>
+                       <div class='panel-body col-md-4'>
+                    
+                    <img class="max image_popup" alt="' + name + '" id="image_' + i + '" src="../img/Loading_icon.gif" />
+                    
+                        </div>
+                 </div>
+                    
+                    <div class='block panel-footer'>
+                        <strong>Posted By: </strong>" + user + "<strong></strong> " + time + "
+                         
+                            <div class='align-right'>                    <strong>Issue(s) reported at               </strong>" + location
+                            </div>
+                    </div>        
                             
                             
                         
