@@ -108,7 +108,7 @@ function search(value) {
              elements +="</div>";//Ending of row div
                     
         elements += "<div class='col-md-8'>";
-            elements += "<div class='panel-footer'><strong>Posted By: </strong>" + user + "<strong></strong> " + time + "<strong>";
+            elements += "<div class='panel-footer'><strong>Posted by: </strong>" + user + "<strong></strong> " + time + "<strong>";
                 elements +="<div class='align-right'>Issue(s) reported at: </strong>" + location ;
                     elements += "<div class= 'voting'>";
                         elements +="<button class='btn btn-success btn-lg' onclick='vote(" + i + ", " + id + ", 1)'> <i class='fa fa-thumbs-up' aria-hidden='true'> </i> </button>";
@@ -122,7 +122,8 @@ function search(value) {
                     elements +="</div>";//Ending of voting div
                     
                 elements +="</div>"; //Ending of align-right div
-                    
+                    elements += "<div class = 'panel-body'><br><div class='panel-footer'><p><strong>Comments</strong><br></p> <p>Great find <strong>Marco</strong>!  I thought I saw that this morning when I walked passed it, but I was not able to stop and snap a picture since I was in a hurry.</p><strong class='sizes'>Brandon Kelm</strong><br></div></div>"
+                    elements+= "<textarea cols='15' rows='4' placeholder= 'Comment here...' class='form-control message' required></textarea>"
             elements += "</div>"; //Ending of panel-footer div
                     
         elements +="</div>";//Ending of col-md-8 div

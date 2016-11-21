@@ -113,9 +113,9 @@
                 
 <!--     In case we want to implement the notifications menus     -->    
                 <!-- /.dropdown -->
-               
+   
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown float">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -177,7 +177,7 @@
     
     
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown float">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-key fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -195,15 +195,15 @@
                 <!-- /.dropdown -->
     
                 
-    
+    <li class= "dropdown float">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+    </li>
     
-                
             </ul>
             <!-- /.navbar-top-links -->
 
@@ -312,38 +312,7 @@
                                        
                             <input id = "fileInput" class = "btn btn-default" type="file" name="fileInput" required>
                                     </div>
-                                                
-                                <script>
-                        /*$(function() {
-/*
-                          // We can attach the `fileselect` event to all file inputs on the page
-                          $(document).on('change', ':file', function() {
-                            var input = $(this),
-                                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-                            input.trigger('fileselect', [numFiles, label]);
-                          });
-
-                          // We can watch for our custom `fileselect` event like this
-                          $(document).ready( function() {
-                              $(':file').on('fileselect', function(event, numFiles, label) {
-
-                                  var input = $(this).parents('.input-group').find(':text'),
-                                      log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-                                  if( input.length ) {
-                                      input.val(log);
-                                  } else {
-                                      if( log ) alert(log);
-                                  }
-
-                              });
-                          });
-
-                        });*/
-                                                
-                                                </script>
-                                                
+                                               
 											</div>
 										</div>
 									</div>
@@ -402,15 +371,16 @@
                                                 <option value="Information Booth">Information Booth</option>
                                                 <option value="Indian River Towers">Indian River Towers</option>
                                            
-											</select>                                  
+											</select>           
+                                            
 											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn btn-primary" required> 
                                             <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
                                             <br>
                                             <div class="right">
-    <label class="font">
-      <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
-    </label>
-  </div>
+                                                <label class="font">
+                                                    <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
+                                                </label>
+                                            </div>
                                            <script> 
                                                function eraseText() {
                                                    document.getElementById("status_message").value = "";
