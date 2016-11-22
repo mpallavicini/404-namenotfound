@@ -4,6 +4,10 @@
     include_once ("../php/issue.php");
     include_once("../php/currentUser.php");
 
+    $sql = "SELECT user_permission FROM users WHERE user_no=".$_SESSION['userid']." AND activated=1 LIMIT 1";
+    $query = mysqli_query($db, $sql);
+    $data = mysqli_fetch_assoc($query);
+    $user_permission = $data["user_permission"];
 ?>
 
 <!DOCTYPE html>
@@ -58,11 +62,6 @@
     <script src="../js/merge.js"></script>
     <script src="../js/search.js"></script>
     
-    <?php
-        require_once("../php/delete_confirm.php");
-        require_once("../php/merge_confirm.php");
-    ?>   
-    
     
     <!-- Custom Fonts -->
    
@@ -76,6 +75,13 @@
 </head>
 
 <body>
+    <?php
+        if ($user_permission == 1) {
+            require_once("../php/delete_confirm.php");
+            require_once("../php/merge_confirm.php");
+        }
+    ?>   
+    
     <h4 class='white'>Welcome Back,
         <?php
         echo userNameByEmail($_SESSION['useremail']);
@@ -397,6 +403,18 @@
 			</div>
 			
 		</form>
+        
+        <?php
+            if ($user_permission == 1) {
+               echo '<button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Issue(s)" data-message="Are you sure you want to delete the selected issues?">
+            <i class="glyphicon glyphicon-trash"></i> Delete
+        </button>
+        <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmMerge" data-title="Merge Issues" data-message="Are you sure you want to merge the selected issues??">
+            <i class="glyphicon glyphicon-duplicate"></i> Merge
+        </button>'; 
+            }
+        ?>
+        
 	</div>
 	</div>
 	</div> 

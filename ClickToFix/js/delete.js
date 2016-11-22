@@ -16,7 +16,7 @@ function deleteIssue() {
     ajax.onreadystatechange = function() {
         if (ajaxReturn(ajax) == true) {
             if (ajax.responseText == "success") {
-                window.location = "../pages/admin.php";
+                window.location = "../pages/ClickToFix.php";
             } else {
                 _("status").innerHTML = ajax.responseText;
             }

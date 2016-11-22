@@ -228,3 +228,10 @@ input.form-control{
 .sizes{
     font-size:14px;
 }
+
+.modal-dialog {
+    left: 0%;
+}
+body.modal-open div.modal-backdrop { 
+    z-index: 0; 
+}
