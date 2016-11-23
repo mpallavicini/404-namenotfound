@@ -75,13 +75,6 @@
 </head>
 
 <body>
-    <?php
-        if ($user_permission == 1) {
-            require_once("../php/delete_confirm.php");
-            require_once("../php/merge_confirm.php");
-        }
-    ?>   
-    
     <h4 class='white'>Welcome Back,
         <?php
         echo userNameByEmail($_SESSION['useremail']);
@@ -214,20 +207,27 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
+                <?php
+                    if ($user_permission == 1) {
+                        require_once("../php/delete_confirm.php");
+                        require_once("../php/merge_confirm.php");
+                    }
+                ?>   
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         
                         
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
+                            <div>
                                 
                                 <!--SEARCH DATABASE MAYBE-->
                                 
-                                <input type="text" id="search_field" class="form-control" onkeyup="searchKeyUp(event)" placeholder="Search...">
+                                <input type="text" id="search_field" class="form-control" onkeyup="search(this.value)" placeholder="Search...">
                                 <span class="input-group-btn">
+                                <!--
                                 <button class="btn btn-default" type="button" onclick="search(_('search_field').value)">
                                     <i class="fa fa-search"></i>
-                                </button>
+                                </button>!-->
                             </span>
                             </div>
                             <!-- /input-group -->
@@ -259,6 +259,7 @@
         </nav>
 
 <div id="page-wrapper">
+    
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Issue Feed</h1>
@@ -528,8 +529,6 @@
     <script src="../dist/js/sb-admin-2.js"></script>
     
     <script>search('');</script>
-
-    
 </body>
 
 </html>

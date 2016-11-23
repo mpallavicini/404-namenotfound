@@ -64,10 +64,11 @@ include_once("currentUser.php");
         $user = [];
         $username = [];
         
-        
+        $id_string = "";
         $i = 0;
         while ($data = mysqli_fetch_assoc($query)) {
             $ids[$i] = $data['id'];
+            $id_string .= $data['id'] . ',';
             $names[$i] = $data['name'];
             $messages[$i] = $data['message'];
             $times[$i] = get_timeago(strtotime($data['datetime']));
@@ -82,10 +83,27 @@ include_once("currentUser.php");
             $i++;
         }
         
-        
         $total_items = count($ids);
         
-        echo json_encode(array('success', $total_items, $admin, $ids, $names, $messages, $times, $locations, $likes, $anonymity, $username));
+        $sql = "SELECT comment, owner, datetime, votes FROM comments WHERE issue_id IN (".substr($id_string, 0, $total_items - 1).") ORDER BY datetime DESC";
+        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        
+        $owners = [];
+        $comments = [];
+        $commentTimes = [];
+        $commentLikes = [];
+        
+        $i = 0;
+        while ($data = mysqli_fetch_assoc($query)) {
+            $owners[$i] = $data['owner'];
+            $comments[$i] = $data['comment'];
+            $commentTimes[$i] = $data['datetime'];
+            $commentLikes[$i] = $data['votes'];
+            
+            $i++;
+        }
+        
+        echo json_encode(array('success', $total_items, $admin, $ids, $names, $messages, $times, $locations, $likes, $anonymity, $username, $owners, $comments, $commentTimes, $commentLikes));
         exit();
     }
     if (isset($_POST["i"])) {

@@ -2,8 +2,14 @@ var dataIds = [];
 var z = 0;
 var imageTags;
 
+var currentSearch = "...";
+var locked = false;
+
 function loadImages() {
     if (reload) {
+        dataIds = [];
+        z = 0;
+        imageTags = "";
         return;
     }
     
@@ -11,39 +17,44 @@ function loadImages() {
     ajax.onreadystatechange = function() {
         if (ajaxReturn(ajax) == true) {
             if (reload) {
-                return;
-            }            
-            
-            imageTags[z].src = 'data:image/jpeg;base64,' + ajax.responseText;
-            
-            // Get the modal
-            var modal = _('myModal');
-
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            var img = imageTags[z];
-            var modalImg = _("img01");
-            var captionText = _("caption");
-            img.onclick = function(){
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                captionText.innerHTML = this.alt;
-            }
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-              modal.style.display = "none";
-            }
-            
-            if (z < imageTags.length - 1) {
-                z++;
-                loadImages();
-            } else {
                 dataIds = [];
                 z = 0;
                 imageTags = "";
+                return;
+            }
+            
+            if (imageTags[z]) {
+                imageTags[z].src = 'data:image/jpeg;base64,' + ajax.responseText;
+            
+                // Get the modal
+                var modal = _('myModal');
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+                var img = imageTags[z];
+                var modalImg = _("img01");
+                var captionText = _("caption");
+                img.onclick = function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                }
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                  modal.style.display = "none";
+                }
+
+                if (z < imageTags.length - 1) {
+                    z++;
+                    loadImages();
+                } else {
+                    dataIds = [];
+                    z = 0;
+                    imageTags = "";
+                }
             }
         }
     }
@@ -52,12 +63,18 @@ function loadImages() {
 
 function searchKeyUp(event) {
     var key = event.keyCode || event.which;
-    if (key == 13) {
+    if (key == 13 && !locked) {
         search(_('search_field').value);
     }
 }
 
 function search(value) {
+    if (locked || currentSearch == value) {
+        return;
+    }
+    currentSearch = value;
+    locked = true;
+    
     reload = true;
     
     $('#feed').empty();
@@ -74,6 +91,7 @@ function search(value) {
 
             if (data[0] == "success") {
                 var feed = $('#feed');
+                feed.empty();
                 
                 var elements = "";
                 
@@ -86,6 +104,12 @@ function search(value) {
                     var likes = data[8][i];
                     var anonymity = data[9][i];
                     var user = data[10][i];
+                    
+                    //comments
+                    var owners = data[11];
+                    var comments = data[12];
+                    var commentTimes = data[13];
+                    var commentLikes = data[14];
                     
             elements +="<div class='row'>";
                 elements +="<div class='col-md-8'>";
@@ -117,13 +141,24 @@ function search(value) {
 
                         elements +="<button class='btn btn-danger btn-lg' onclick='vote(" + i + ", " + id + ", 0)'> <i class='fa fa-thumbs-down' aria-hidden='true'></i></button>";
 
-                        elements += "<button class= 'btn btn-warning btn-lg right' onclick='toggleComment(`comment_" + i + "`)' id='comment_" + i + "'>Comments</button>";
+                        elements += "<button class= 'btn btn-warning btn-lg right' onclick='toggleComment(" + i + ")'>Comments</button>";
 
                     elements +="</div>";//Ending of voting div
                     
                 elements +="</div>"; //Ending of align-right div
-                    elements += "<div class = 'panel-body'><br><div class='panel-footer'><p><strong>Comments</strong><br></p> <p>Great find <strong>Marco</strong>!  I thought I saw that this morning when I walked passed it, but I was not able to stop and snap a picture since I was in a hurry.</p><strong class='sizes'>Brandon Kelm</strong><br></div></div>"
-                    elements+= "<textarea cols='15' rows='4' placeholder= 'Comment here...' class='form-control message' required></textarea>"
+                    
+                    elements += "<div class = 'panel-body'><br><div class='panel-footer'><p><strong>Comments</strong><br></p><div style='display: none' id='comments_" + i + "'>";
+                    if (owners.length != 0) {
+                        for (var j = 0; j < owners.length; j++) {
+                            elements += "<p>" + comments[j] + "</p><strong class='sizes'>" + owners[j] + " / " + commentTimes[j] + " / Likes: " + commentLikes[j] + "</strong><br><hr>";   
+                        }
+                        elements += "</div>";
+                    }
+                    elements += "</div></div>";
+                    
+                    elements+= "<textarea id='comment_box_" + i + "' cols='15' rows='4' placeholder= 'Comment here...' class='form-control message' required></textarea>";
+                    elements += "<button class'btn btn-danger' onclick='submitComment(" + id + ", " + i + ")'>Submit</button>";
+                    
             elements += "</div>"; //Ending of panel-footer div
                     
         elements +="</div>";//Ending of col-md-8 div
@@ -147,11 +182,15 @@ function search(value) {
                 
                 feed.append(elements);
                 _('loader').style.display = 'none';
-
-                reload = false;
                 
                 dataIds = data[3];
                 imageTags = $('.max');
+                
+                commentTags = $('.comment_body');
+                
+                locked = false;
+                reload = false;
+                
                 loadImages();
             } else {
                 alert(ajax.responseText);
