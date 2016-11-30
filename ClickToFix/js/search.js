@@ -148,13 +148,14 @@ function search(value) {
                 elements +="</div>"; //Ending of align-right div
                     
                     elements += "<div class = 'panel-body'><br><div class='panel-footer'><p><strong>Comments</strong><br></p><div style='display: none' id='comments_" + i + "'>";
-                    if (owners.length != 0) {
-                        for (var j = 0; j < owners.length; j++) {
-                            elements += "<p>" + comments[j] + "</p><strong class='sizes'>" + owners[j] + " / " + commentTimes[j] + " / Likes: " + commentLikes[j] + "</strong><br><hr>";   
+                    if (owners[i].length != 0) {
+                        for (var j = 0; j < owners[i].length; j++) {
+                            elements += "<p>" + comments[i][j] + "</p><strong class='sizes'>" + owners[i][j] + " / " + commentTimes[i][j] + " / Likes: " + commentLikes[i][j] + "</strong><br><hr>";   
                         }
-                        elements += "</div>";
+                    } else {
+                        elements += "<p>No comments.</p>";
                     }
-                    elements += "</div></div>";
+                    elements += "</div></div></div>";
                     
                     elements+= "<textarea id='comment_box_" + i + "' cols='15' rows='4' placeholder= 'Comment here...' class='form-control message' required></textarea>";
                     elements += "<button class'btn btn-danger' onclick='submitComment(" + id + ", " + i + ")'>Submit</button>";

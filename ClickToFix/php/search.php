@@ -64,6 +64,11 @@ include_once("currentUser.php");
         $user = [];
         $username = [];
         
+        $owners = [];
+        $comments = [];
+        $commentTimes = [];
+        $commentLikes = [];
+        
         $id_string = "";
         $i = 0;
         while ($data = mysqli_fetch_assoc($query)) {
@@ -79,29 +84,31 @@ include_once("currentUser.php");
             if($anonymity[$i]==1) {$username[$i] = "Anonymous";}
             else{$username[$i] = userNameByEmail($user[$i]);}
             
+            $sql = "SELECT comment, owner, datetime, votes FROM comments WHERE issue_id=$ids[$i] ORDER BY datetime DESC";
+        
+            $comment_query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
+
+            $owners_this = [];
+            $comments_this = [];
+            $commentTimes_this = [];
+            $commentLikes_this = [];
+
+            while ($comment_data = mysqli_fetch_assoc($comment_query)) {
+                array_push($owners_this, $comment_data['owner']);
+                array_push($comments_this, $comment_data['comment']);
+                array_push($commentTimes_this, $comment_data['datetime']);
+                array_push($commentLikes_this, $comment_data['votes']);
+            }
+            
+            array_push($owners, $owners_this);
+            array_push($comments, $comments_this);
+            array_push($commentTimes, $commentTimes_this);
+            array_push($commentLikes, $commentLikes_this);
+            
             $i++;
         }
         
         $total_items = count($ids);
-        
-        $sql = "SELECT comment, owner, datetime, votes FROM comments WHERE issue_id IN (".substr($id_string, 0, $total_items - 2).") ORDER BY datetime DESC";
-        
-        $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
-        
-        $owners = [];
-        $comments = [];
-        $commentTimes = [];
-        $commentLikes = [];
-        
-        $i = 0;
-        while ($data = mysqli_fetch_assoc($query)) {
-            $owners[$i] = $data['owner'];
-            $comments[$i] = $data['comment'];
-            $commentTimes[$i] = $data['datetime'];
-            $commentLikes[$i] = $data['votes'];
-            
-            $i++;
-        }
         
         echo json_encode(array('success', $total_items, $admin, $ids, $names, $messages, $times, $locations, $likes, $anonymity, $username, $owners, $comments, $commentTimes, $commentLikes));
         exit();
