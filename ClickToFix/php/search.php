@@ -28,13 +28,13 @@ include_once("currentUser.php");
         date_default_timezone_set("America/New_York");
                     
         $sql = "SELECT user_permission FROM users WHERE user_no=".$_SESSION['userid'];
-        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         $data = mysqli_fetch_array($query);
         $admin = false;
         if ($data[0] == 1) {
             $admin = true;
         }
-        
+
         $string = $_POST['s'];   
         //seperating the string using explode function
         $words = explode(" ",$string);
@@ -52,7 +52,7 @@ include_once("currentUser.php");
         
         $sql .= " ORDER BY datetime DESC";
         
-        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         
         $ids = [];
         $names = [];
@@ -78,15 +78,15 @@ include_once("currentUser.php");
             $user[$i] = $data['user'];
             if($anonymity[$i]==1) {$username[$i] = "Anonymous";}
             else{$username[$i] = userNameByEmail($user[$i]);}
-                                        
-
+            
             $i++;
         }
         
         $total_items = count($ids);
         
-        $sql = "SELECT comment, owner, datetime, votes FROM comments WHERE issue_id IN (".substr($id_string, 0, $total_items - 1).") ORDER BY datetime DESC";
-        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        $sql = "SELECT comment, owner, datetime, votes FROM comments WHERE issue_id IN (".substr($id_string, 0, $total_items - 2).") ORDER BY datetime DESC";
+        
+        $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         
         $owners = [];
         $comments = [];
@@ -112,7 +112,7 @@ include_once("currentUser.php");
         $issue_id = $_POST["i"];
         
         $sql = "SELECT image FROM issues WHERE id=$issue_id";
-        $query = mysqli_query($db, $sql) or die(mysqli_error($db));
+        $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         $data = mysqli_fetch_array($query);
         echo base64_encode($data[0]);
         exit();
