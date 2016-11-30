@@ -115,13 +115,27 @@ include_once("currentUser.php");
     }
     if (isset($_POST["i"])) {
         include_once("db_connect.php");
+        include_once("resize-image.php");
         
         $issue_id = $_POST["i"];
         
         $sql = "SELECT image FROM issues WHERE id=$issue_id";
         $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         $data = mysqli_fetch_array($query);
-        echo base64_encode($data[0]);
+
+        $image = imagecreatefromstring($data[0]);
+        $w = imagesx($image);
+        $h = imagesy($image);
+        $ratio = $w / $h;
+        $newHeight = 800;
+        $image = imagescale($image, $ratio * $newHeight, $newHeight);
+        
+        ob_start();
+        imagejpeg($image);
+        $contents = ob_get_contents();
+        ob_end_clean();
+        
+        echo base64_encode($contents);
         exit();
     }
 ?>
