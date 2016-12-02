@@ -115,7 +115,6 @@ include_once("currentUser.php");
     }
     if (isset($_POST["i"])) {
         include_once("db_connect.php");
-        include_once("resize-image.php");
         
         $issue_id = $_POST["i"];
         
