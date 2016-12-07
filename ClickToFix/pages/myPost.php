@@ -1,7 +1,14 @@
+
 <?php
     session_start();
     include_once("../php/logincheck.php");
     include_once ("../php/issue.php");
+    include_once("../php/currentUser.php");
+
+    $sql = "SELECT user_permission FROM users WHERE user_no=".$_SESSION['userid']." AND activated=1 LIMIT 1";
+    $query = mysqli_query($db, $sql);
+    $data = mysqli_fetch_assoc($query);
+    $user_permission = $data["user_permission"];
 ?>
 
 <!DOCTYPE html>
@@ -56,11 +63,6 @@
     <script src="../js/merge.js"></script>
     <script src="../js/search.js"></script>
     
-    <?php
-        require_once("../php/delete_confirm.php");
-        require_once("../php/merge_confirm.php");
-    ?>   
-    
     
     <!-- Custom Fonts -->
    
@@ -74,6 +76,13 @@
 </head>
 
 <body>
+    <h4 class='white'>Welcome Back,
+        <?php
+        echo userNameByEmail($_SESSION['useremail']);
+        ?>
+    </h4>
+    
+    
     <!-- The Modal -->
     <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
 
@@ -88,154 +97,25 @@
     </div>
     
     <div id="wrapper">
-
+        
+        
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             
             <div class="navbar-header">
                 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                
                 <a class="navbar-brand" href="ClickToFix.php"><img class= "logo" src = "../img/logo4.png"></a>
                 
             </div>
             <!-- /.navbar-header -->
 <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
+                
+<!--     In case we want to implement the notifications menus     -->    
                 <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 1</strong>
-                                        <span class="pull-right text-muted">40% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 2</strong>
-                                        <span class="pull-right text-muted">20% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                            <span class="sr-only">20% Complete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 3</strong>
-                                        <span class="pull-right text-muted">60% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 4</strong>
-                                        <span class="pull-right text-muted">80% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Tasks</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-tasks -->
-                </li>
+   
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown float">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -294,8 +174,10 @@
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
+    
+    
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <li class="dropdown float">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-key fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -311,26 +193,47 @@
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
+    
+                
+    <li class= "dropdown float">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+    </li>
+    
             </ul>
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
+                <?php
+                    if ($user_permission == 1) {
+                        require_once("../php/delete_confirm.php");
+                        require_once("../php/merge_confirm.php");
+                    }
+                ?>   
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
+                        
+                        
                         <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
+                            <div>
                                 
                                 <!--SEARCH DATABASE MAYBE-->
                                 
-                                <input type="text" id="search_field" class="form-control" onkeyup="searchKeyUp(event)" placeholder="Search...">
+                                <input type="text" id="search_field" class="form-control" onkeyup="search(this.value)" placeholder="Search...">
                                 <span class="input-group-btn">
+                                <!--
                                 <button class="btn btn-default" type="button" onclick="search(_('search_field').value)">
                                     <i class="fa fa-search"></i>
-                                </button>
+                                </button>!-->
                             </span>
                             </div>
                             <!-- /input-group -->
                         </li>
+    
                         <li>
                             <a class= "active" href="ClickToFix.php"><i class="fa fa-home fa-fw"></i>Home</a>
                         </li>
@@ -338,56 +241,17 @@
                     
                         
                         <!-- UI ELEMENTS-->
-                        <li class = "active">
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class = "word-color"href="ClickToFix.php">Panels and Wells</a>
-                                </li>
+                        <li >
+                            <a href="myPost.php"><i class="fa fa-wrench fa-fw"></i>About Us</a>
+                            
                                 
-                            </ul>
+                            
                             <!-- /.nav-second-level -->
                         </li>
                         
                         
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                
-                                
-                                <!-- THIRD LEVEL STUFF-->
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    
-                                    <ul class="nav nav-third-level">
-                                        <!--THIRD LEVEL STUFF-->
-                                        
-                                        
-                                    </ul>
-                                    
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="../pages/blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                      
+                       
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -396,9 +260,10 @@
         </nav>
 
 <div id="page-wrapper">
+    
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Issues and Problems</h1>
+                    <h1 class="page-header">Issue Feed</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -455,43 +320,12 @@
                                        
                             <input id = "fileInput" class = "btn btn-default" type="file" name="fileInput" required>
                                     </div>
-                                                
-                                <script>
-                        /*$(function() {
-/*
-                          // We can attach the `fileselect` event to all file inputs on the page
-                          $(document).on('change', ':file', function() {
-                            var input = $(this),
-                                numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-                            input.trigger('fileselect', [numFiles, label]);
-                          });
-
-                          // We can watch for our custom `fileselect` event like this
-                          $(document).ready( function() {
-                              $(':file').on('fileselect', function(event, numFiles, label) {
-
-                                  var input = $(this).parents('.input-group').find(':text'),
-                                      log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-                                  if( input.length ) {
-                                      input.val(log);
-                                  } else {
-                                      if( log ) alert(log);
-                                  }
-
-                              });
-                          });
-
-                        });*/
-                                                
-                                                </script>
-                                                
+                                               
 											</div>
 										</div>
 									</div>
 									<div class="col-md-5">
-										<div class="form-group">
+										<div class="right form-group">
                                             <!--Locations of all the buildings-->
 											<select name="loc" id="status_loc" class="form-control privacy-dropdown pull-left input-md" required>			
                                                 <option value="" disabled selected>Please Select Location</option>
@@ -545,19 +379,25 @@
                                                 <option value="Information Booth">Information Booth</option>
                                                 <option value="Indian River Towers">Indian River Towers</option>
                                            
-											</select>                                   
+											</select>           
                                             
-                                            <a href="myPost.php">click here</a>
-											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn right btn-primary" required> 
+											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn btn-primary" required> 
                                             <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
-                                            
+                                            <br>
+                                            <div class="right">
+                                                <label class="font">
+                                                    <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
+                                                </label>
+                                            </div>
                                            <script> 
                                                function eraseText() {
                                                    document.getElementById("status_message").value = "";
                                                }
                                             </script>
-
+                                            
+                                            
 										</div>
+                                        
 									</div>
 								</div>
 						</div>
@@ -565,6 +405,18 @@
 			</div>
 			
 		</form>
+        
+        <?php
+            if ($user_permission == 1) {
+               echo '<button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Issue(s)" data-message="Are you sure you want to delete the selected issues?">
+            <i class="glyphicon glyphicon-trash"></i> Delete
+        </button>
+        <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmMerge" data-title="Merge Issues" data-message="Are you sure you want to merge the selected issues??">
+            <i class="glyphicon glyphicon-duplicate"></i> Merge
+        </button>'; 
+            }
+        ?>
+        
 	</div>
 	</div>
 	</div> 
@@ -589,12 +441,35 @@
                     </script>!-->
                         <div id="loader" >Loading.....</div>
                         <div  id="feed">
-                            <!-- <div class="panel-footer">
+                            <!-- <div class="comment panel-footer">
                              <button onclick="toggleComment('comment1')">Comment</button>>
                             
                         </div> !-->
                             
-                            
+                   <div class="row">
+                       <div class="col-md-6">
+                           <div class="panel-heading">
+                                <input type='checkbox' name='checkbox' value='" + id + "'> 
+                                <strong>name</strong>
+                           </div>
+                    
+                           <div class='panel-body'>" + message + "
+                           </div>
+                    
+                        </div>
+                       <div class='panel-body col-md-4'>
+                    
+                    <img class="max image_popup" alt="' + name + '" id="image_' + i + '" src="../img/Loading_icon.gif" />
+                    
+                        </div>
+                 </div>
+                    
+                    <div class='block panel-footer'>
+                        <strong>Posted By: </strong>" + user + "<strong></strong> " + time + "
+                         
+                            <div class='align-right'>                    <strong>Issue(s) reported at               </strong>" + location
+                            </div>
+                    </div>        
                             
                             
                         
@@ -653,10 +528,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-    
-    <script>search('<?php echo $_SESSION['useremail']?>');</script>
-
-    
+    <?php echo $_SESSION['useremail'];?>
+    <script>search('test');</script>
 </body>
 
 </html>
