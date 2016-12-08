@@ -114,7 +114,27 @@
                 <!-- /.dropdown -->
    
                 <!-- /.dropdown -->
+                
+    
+    
+                <!-- /.dropdown -->
                 <li class="dropdown float">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-key fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="../php/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+    
+    <li class="dropdown float">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -173,28 +193,10 @@
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
-    
-    
-                <!-- /.dropdown -->
-                <li class="dropdown float">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-key fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="../php/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
                 <!-- /.dropdown -->
     
                 
-    <li class= "dropdown float">
+    <li class= "dropdown">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -308,23 +310,39 @@
                       </div>
 						<div class="panel-footer">
 								<div class="row">
-									<div class="col-md-7">
+									<div class="col-lg-12">
 										<div class="form-group">
-											<div class="btn-group">
+											<div class=""> <!-- btn-group -->
 											  
                             
                                            
-                                                <div class="input-group">
+                                                <div class=""> <!-- input-group -->
                                        
                                        
-                            <input id = "fileInput" class = "btn btn-default" type="file" name="fileInput" required>
+                            <input id = "fileInput" class = "inline btn btn-default" type="file" name="fileInput" required>
+                                                    
+                                       <a class="nowrap">             
+                                         <?php
+                                     if ($user_permission == 1) {
+                                        echo '<button class="btn text-center btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Issue(s)" data-message="Are you sure you want to delete the selected issues?">
+                                            <i class="glyphicon glyphicon-trash"></i> Delete
+                                        </button>
+                                        <button class="btn text-center btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmMerge" data-title="Merge Issues" data-message="Are you sure you want to merge the selected issues??">
+                                            <i class="glyphicon glyphicon-duplicate"></i> Merge
+                                        </button>'; 
+                                            }
+        ?>
+                                                    </a>
                                     </div>
                                                
 											</div>
 										</div>
 									</div>
-									<div class="col-md-5">
+									<div class="col-lg-12">
 										<div class="right form-group">
+                                            
+                                           
+                                            
                                             <!--Locations of all the buildings-->
 											<select name="loc" id="status_loc" class="form-control privacy-dropdown pull-left input-md" required>			
                                                 <option value="" disabled selected>Please Select Location</option>
@@ -380,14 +398,17 @@
                                            
 											</select>           
                                             
+                                            <a class="nowrap"> 
 											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn btn-primary" required> 
                                             <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
+                                            </a>
                                             <br>
                                             <div class="right">
                                                 <label class="font">
                                                     <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
                                                 </label>
                                             </div>
+                                             
                                            <script> 
                                                function eraseText() {
                                                    document.getElementById("status_message").value = "";
@@ -396,7 +417,8 @@
                                             
                                             
 										</div>
-                                        
+                                           
+                                       
 									</div>
 								</div>
 						</div>
@@ -405,16 +427,7 @@
 			
 		</form>
         
-        <?php
-            if ($user_permission == 1) {
-               echo '<button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Issue(s)" data-message="Are you sure you want to delete the selected issues?">
-            <i class="glyphicon glyphicon-trash"></i> Delete
-        </button>
-        <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmMerge" data-title="Merge Issues" data-message="Are you sure you want to merge the selected issues??">
-            <i class="glyphicon glyphicon-duplicate"></i> Merge
-        </button>'; 
-            }
-        ?>
+        
         
 	</div>
 	</div>
@@ -454,7 +467,8 @@
                     
                            <div class='panel-body'>" + message + "
                            </div>
-                    
+                           
+                   
                         </div>
                        <div class='panel-body col-md-4'>
                     

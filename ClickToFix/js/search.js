@@ -147,8 +147,9 @@ function search(value) {
                     
                 elements +="</div>"; //Ending of align-right div
                     
-                    elements += "<div class = 'panel-body'><br><div class='panel-footer'><p><strong>Comments</strong><br></p><div style='display: none' id='comments_" + i + "'>";
+                    elements += "<div class = 'panel-body'><br><div class='panel-footer'><div style='display: none' id='comments_" + i + "'><p><strong>Comments</strong><br></p>";
                     if (owners[i].length != 0) {
+                        elements += "";
                         for (var j = 0; j < owners[i].length; j++) {
                             elements += "<p>" + comments[i][j] + "</p><strong class='sizes'>" + owners[i][j] + " / " + commentTimes[i][j] + " / Likes: " + commentLikes[i][j] + "</strong><br><hr>";   
                         }
@@ -158,14 +159,14 @@ function search(value) {
                     elements += "</div></div></div>";
                     
                     elements+= "<textarea id='comment_box_" + i + "' cols='15' rows='4' placeholder= 'Comment here...' class='form-control message' required></textarea>";
-                    elements += "<button class'btn btn-danger' onclick='submitComment(" + id + ", " + i + ")'>Submit</button>";
+                    elements += "<button class'btn btn-danger'  onclick='submitComment(" + id + ", " + i + ")'>Submit</button>";
                     
             elements += "</div>"; //Ending of panel-footer div
                     
         elements +="</div>";//Ending of col-md-8 div
 
                     
-                    
+                    elements += ""
                     
                 elements += "<div class='container'>";
                      elements +="<div class='row'>";

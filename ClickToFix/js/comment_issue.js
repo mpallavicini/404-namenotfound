@@ -23,6 +23,8 @@ function submitComment(issue_id, index) {
 }
 
 function toggleComment(index) {
+   
+    
     var comments = _('comments_' + index);
     comments.style.display = comments.style.display == 'none' ? 'block':'none';
 }

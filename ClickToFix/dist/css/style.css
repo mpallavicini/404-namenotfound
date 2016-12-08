@@ -83,3 +83,8 @@ body {
 .privacy-dropdown {
     width: 250px;
 }
+.active {
+color: #ffffff;
+background-color: #ed9c28;
+border-color: #d58512;
+}
