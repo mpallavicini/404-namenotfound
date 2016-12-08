@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     include_once("../php/logincheck.php");
@@ -242,7 +241,7 @@
                         
                         <!-- UI ELEMENTS-->
                         <li >
-                            <a href="myPost.php"><i class="fa fa-wrench fa-fw"></i>About Us</a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>About Us</a>
                             
                                 
                             
@@ -388,6 +387,7 @@
                                                 <label class="font">
                                                     <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
                                                 </label>
+                                                <a href="myPost.php">click here</a>
                                             </div>
                                            <script> 
                                                function eraseText() {
@@ -528,8 +528,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-    <?php echo $_SESSION['useremail'];?>
-    <script>search('test');</script>
+    
+    <script>search('<?php $_SESSION['useremail'];?>');</script>
+    
 </body>
 
 </html>
