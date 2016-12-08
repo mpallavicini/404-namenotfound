@@ -529,7 +529,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
     
-    <script>search('<?php $_SESSION['useremail'];?>');</script>
+    <script>search('', '<?php echo $_SESSION["useremail"]; ?>')</script>
     
 </body>
 

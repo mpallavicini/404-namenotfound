@@ -68,10 +68,11 @@ function searchKeyUp(event) {
     }
 }
 
-function search(value) {
+function search(value, email) {
     if (locked || currentSearch == value) {
         return;
     }
+
     currentSearch = value;
     locked = true;
     
@@ -199,7 +200,11 @@ function search(value) {
             }
         }
     }
-    ajax.send("s="+value);
+    if (email) {
+        ajax.send("s="+value+"&e="+email);
+    } else {
+        ajax.send("s="+value);
+    }
 }
 
 function setPopupImg(index) {

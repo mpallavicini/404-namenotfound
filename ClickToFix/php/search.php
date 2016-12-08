@@ -26,7 +26,7 @@ include_once("currentUser.php");
         session_start();
         include_once("db_connect.php");
         date_default_timezone_set("America/New_York");
-                    
+
         $sql = "SELECT user_permission FROM users WHERE user_no=".$_SESSION['userid'];
         $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         $data = mysqli_fetch_array($query);
@@ -40,8 +40,14 @@ include_once("currentUser.php");
         $words = explode(" ",$string);
         $wordCount = count($words);
         $firstWord = "%".$words[0]."%";
-        $sql = "SELECT id, name, message, datetime, location, likes, anonymity, user FROM issues WHERE (CONVERT( name USING utf8 ) LIKE '$firstWord') OR (CONVERT( message USING utf8 ) LIKE '$firstWord')";
-        if($wordCount>1)
+        $sql = "SELECT id, name, message, datetime, location, likes, anonymity, user FROM issues WHERE";
+        
+        if (isset($_POST["e"])) {
+            $sql .= " (user='".$_POST["e"]."') AND";
+        }
+            
+        $sql .= " ((CONVERT( name USING utf8 ) LIKE '$firstWord') OR (CONVERT( message USING utf8 ) LIKE '$firstWord')";
+        if ($wordCount>1)
         {
             for($i=1; $i<$wordCount; $i++)
             {
@@ -50,8 +56,7 @@ include_once("currentUser.php");
             }
         }
         
-        $sql .= " ORDER BY datetime DESC";
-        
+        $sql .= ") ORDER BY datetime DESC";
         $query = mysqli_query($db, $sql) or die(json_encode(mysqli_error($db)));
         
         $ids = [];
