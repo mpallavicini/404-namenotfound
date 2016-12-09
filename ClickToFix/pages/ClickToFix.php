@@ -44,12 +44,14 @@
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
   
      <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../addtohome/style/addtohomescreen.css">
 
     
     
     <link href="../dist/css/style.css" rel="stylesheet">
     <link href="../dist/css/my-css.css" rel="stylesheet">
     
+    <script src="../addtohome/src/addtohomescreen.js"></script>
     <script src="../js/misc.js"></script>
     <script src="../js/ajax.js"></script>
     <script src="../js/comment_issue.js"></script>
@@ -61,6 +63,11 @@
     <script src="../js/delete.js"></script>
     <script src="../js/merge.js"></script>
     <script src="../js/search.js"></script>
+    
+    <!--Calling the addToHomeScreen function-->
+    <script>
+            addToHomescreen();
+    </script>
     
     
     <!-- Custom Fonts -->
