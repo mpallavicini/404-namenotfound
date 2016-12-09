@@ -105,12 +105,13 @@ function search(value, email) {
                     var likes = data[8][i];
                     var anonymity = data[9][i];
                     var user = data[10][i];
+                    var status = data[11][i];
                     
                     //comments
-                    var owners = data[11];
-                    var comments = data[12];
-                    var commentTimes = data[13];
-                    var commentLikes = data[14];
+                    var owners = data[12];
+                    var comments = data[13];
+                    var commentTimes = data[14];
+                    var commentLikes = data[15];
                     
             elements +="<div class='row'>";
                 elements +="<div class='col-md-8'>";
@@ -119,6 +120,15 @@ function search(value, email) {
                         elements += "<input type='checkbox' name='checkbox' value='" + id + "'> ";
                     }
                         elements += "<strong>" + name + "</strong>";
+                    if(status == "reported"){
+                        elements+= "<a class = 'red float'>Reported</a>";
+                    }else
+                        if(status == "in_progress"){
+                            elements+= "<a class = 'yellow float'>In Progress</a>";
+                            }else{
+                                elements+= "<a class = 'green float'>Resolved</a>";
+                            }
+                    
                     elements +="</div>";//Ending of panel-heading div
 
                     elements += "<div class='panel-body'>" + message + "</div>";

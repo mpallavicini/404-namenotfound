@@ -40,7 +40,7 @@ include_once("currentUser.php");
         $words = explode(" ",$string);
         $wordCount = count($words);
         $firstWord = "%".$words[0]."%";
-        $sql = "SELECT id, name, message, datetime, location, likes, anonymity, user FROM issues WHERE";
+        $sql = "SELECT id, name, message, datetime, location, likes, anonymity, user, status FROM issues WHERE";
         
         if (isset($_POST["e"])) {
             $sql .= " (user='".$_POST["e"]."') AND";
@@ -68,6 +68,7 @@ include_once("currentUser.php");
         $anonymity = [];
         $user = [];
         $username = [];
+        $status = [];
         
         $owners = [];
         $comments = [];
@@ -86,6 +87,7 @@ include_once("currentUser.php");
             $likes[$i] = $data['likes'];
             $anonymity[$i] = $data['anonymity'];
             $user[$i] = $data['user'];
+            $status[$i] = $data['status'];
             if($anonymity[$i]==1) {$username[$i] = "Anonymous";}
             else{$username[$i] = userNameByEmail($user[$i]);}
             
@@ -115,7 +117,7 @@ include_once("currentUser.php");
         
         $total_items = count($ids);
         
-        echo json_encode(array('success', $total_items, $admin, $ids, $names, $messages, $times, $locations, $likes, $anonymity, $username, $owners, $comments, $commentTimes, $commentLikes));
+        echo json_encode(array('success', $total_items, $admin, $ids, $names, $messages, $times, $locations, $likes, $anonymity, $username, $status, $owners, $comments, $commentTimes, $commentLikes));
         exit();
     }
     if (isset($_POST["i"])) {

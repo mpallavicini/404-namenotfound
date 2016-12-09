@@ -249,3 +249,15 @@ input[type="file"] {
     white-space:nowrap;
     padding-top:4px;
 }
+.red{
+    color:red !important;
+    text-decoration:none !important;
+}
+.green{
+    color:green !important;
+    text-decoration:none !important;
+}
+.yellow{
+    color:orange !important;
+    text-decoration:none !important;
+}

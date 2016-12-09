@@ -329,8 +329,108 @@
                                        
                                        
                             <input id = "fileInput" class = "inline btn btn-default" type="file" name="fileInput" required>
-                                                    
-                                       <a class="nowrap">             
+                                    
+                                                
+                                                <a class="">
+                                                
+											
+                                                <!--Locations of all the buildings-->
+											
+                                                
+                                            <select name="loc" id="status_loc" class="form-control privacy-dropdown pull-left input-md" required>			
+                                        <option value="" disabled selected>Please Select Location</option>
+                                        
+                                      <option value="Admissions" >Admissions</option>
+                                      <option value="Student Activities Center">Student Activities Center</option>
+                                        <option value="Tom Oxley Athletic Center">Tom Oxley Athletic Center</option>
+                                        <option value="Administration, KR Williams">Administration, KR Williams</option>
+                                        <option value="Ritter Art Gallery">Ritter Art Gallery</option>
+                                        <option value="Arts and Humanities">Arts and Humanities</option>
+                                        <option value="College of Arts and Letters, Schmidt">College of Arts and Letters, Schmidt</option>
+                                        <option value="Carole and Barry Kaye Auditorium">Carole and Barry Kaye Auditorium</option>
+                                        <option value="Memory and Wellness Center">Memory and Wellness Center</option>
+                                        <option value="Baseball Stadium">Baseball Stadium</option>
+                                        <option value="College of Medicine, Schmidt">College of Medicine, Schmidt</option>
+                                        <option value="Bookstore">Bookstore</option>
+                                        <option value="Behavioral Sciences">Behavioral Sciences</option>
+                                        <option value="College of Business">College of Business</option>
+                                        <option value="Karen Slattery Ed Res Ctr for Child Dev">Karen Slattery Ed Res Ctr for Child Dev</option>
+                                        <option value="Peter and Nona Gordon Library/Media Center">Peter and Nona Gordon Library/Media Center</option>
+                                        <option value="Continuing Education Hall">Continuing Education Hall</option>
+                                        <option value="Computer Center">Computer Center</option>
+                                        <option value="Campus Operations, Police, Traffic and Parking">Campus Operations, Police, Traffic and Parking</option>
+                                        <option value="Culture and Society Building, Living Room Theaters">Culture and Society Building, Living Room Theaters</option>
+                                        <option value="Nations North - Algonquin">Nations North - Algonquin</option>
+                                        <option value="Indian River East Tower">Indian River East Tower</option>
+                                        <option value="Indian River West Tower">Indian River West Tower</option>
+                                        <option value="Heritage Park North Tower">Heritage Park North Tower</option>
+                                        <option value="Heritage Park South Tower">Heritage Park South Tower</option>
+                                        <option value="Galdes Park North Tower">Galdes Park North Tower</option>
+                                        <option value="Glades Park South Tower">Glades Park South Tower</option>
+                                        <option value="Glades Davis Pavillion">Glades Davis Pavillion</option>
+                                        <option value="Desantis Pavillion">Desantis Pavillion</option>
+                                        <option value="College of Education">College of Education</option>
+                                        <option value="College of Engineering">College of Engineering</option>
+                                        <option value="Engineering East">Engineering East</option>
+                                        <option value="Engineering West">Engineering West</option>
+                                        <option value="Alumni Center, Marleen and Harold Forkas">Alumni Center, Marleen and Harold Forkas</option>
+                                        <option value="Athletic Field House - Pool">Athletic Field House - Pool</option>
+                                        <option value="Fleming Hall">Fleming Hall</option>
+                                        <option value="Food and Services">Food and Services</option>
+                                        <option value="FAU Stadium">FAU Stadium</option>
+                                        <option value="Athletic Field House West">Athletic Field House West</option>
+                                        <option value="Fleming West">Fleming West</option>
+                                        <option value="General Classroom North">General Classroom North</option>
+                                        <option value="Glades Park Tower">Glades Park Tower</option>
+                                        <option value="General Classroom South">General Classroom South</option>
+                                        <option value="Arena">Arena</option>
+                                        <option value="Heritage Park Towers">Heritage Park Towers</option>
+                                        <option value="AD Henderson Univ School">AD Henderson Univ School</option>
+                                        <option value="Information Booth">Information Booth</option>
+                                        <option value="Indian River Towers">Indian River Towers</option>
+
+                                    </select>   
+                                                <a class = "float nowrap">    
+                                                    <input id = "fileInput" type="submit" name="submit" value="Post" class="btn btn-primary" required> 
+                                            <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
+                                                    </a>
+                                            </a>
+                                            
+                                            <br>
+                                                <div class="right">
+                                                    <label class="font">
+                                                        <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
+                                                        </label>
+                                                    </div>
+                                                
+                                                
+                                                </div>
+                                               
+											</div>
+										</div>
+									</div>
+									<!--<div class="col-lg-12">
+										<div class="right form-group">
+                                            
+                                           
+                                            
+                                            
+                                             
+                                           
+                                            
+                                            
+										</div>
+                                           
+                                       
+									</div>-->
+								</div>
+						</div>
+                   
+                   
+                    </div>
+                
+			</div>
+             <a class="nowrap">             
                                          <?php
                                      if ($user_permission == 1) {
                                         echo '<button class="btn text-center btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Issue(s)" data-message="Are you sure you want to delete the selected issues?">
@@ -342,97 +442,6 @@
                                             }
         ?>
                                                     </a>
-                                    </div>
-                                               
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12">
-										<div class="right form-group">
-                                            
-                                           
-                                            
-                                            <!--Locations of all the buildings-->
-											<select name="loc" id="status_loc" class="form-control privacy-dropdown pull-left input-md" required>			
-                                                <option value="" disabled selected>Please Select Location</option>
-                                                <option value="Use Geo Location" >Use Geo Location</option>
-						                      <option value="Admissions" >Admissions</option>
-						                      <option value="Student Activities Center">Student Activities Center</option>
-                                                <option value="Tom Oxley Athletic Center">Tom Oxley Athletic Center</option>
-                                                <option value="Administration, KR Williams">Administration, KR Williams</option>
-                                                <option value="Ritter Art Gallery">Ritter Art Gallery</option>
-                                                <option value="Arts and Humanities">Arts and Humanities</option>
-                                                <option value="College of Arts and Letters, Schmidt">College of Arts and Letters, Schmidt</option>
-                                                <option value="Carole and Barry Kaye Auditorium">Carole and Barry Kaye Auditorium</option>
-                                                <option value="Memory and Wellness Center">Memory and Wellness Center</option>
-                                                <option value="Baseball Stadium">Baseball Stadium</option>
-                                                <option value="College of Medicine, Schmidt">College of Medicine, Schmidt</option>
-                                                <option value="Bookstore">Bookstore</option>
-                                                <option value="Behavioral Sciences">Behavioral Sciences</option>
-                                                <option value="College of Business">College of Business</option>
-												<option value="Karen Slattery Ed Res Ctr for Child Dev">Karen Slattery Ed Res Ctr for Child Dev</option>
-                                                <option value="Peter and Nona Gordon Library/Media Center">Peter and Nona Gordon Library/Media Center</option>
-                                                <option value="Continuing Education Hall">Continuing Education Hall</option>
-                                                <option value="Computer Center">Computer Center</option>
-                                                <option value="Campus Operations, Police, Traffic and Parking">Campus Operations, Police, Traffic and Parking</option>
-                                                <option value="Culture and Society Building, Living Room Theaters">Culture and Society Building, Living Room Theaters</option>
-                                                <option value="Nations North - Algonquin">Nations North - Algonquin</option>
-                                                <option value="Indian River East Tower">Indian River East Tower</option>
-                                                <option value="Indian River West Tower">Indian River West Tower</option>
-                                                <option value="Heritage Park North Tower">Heritage Park North Tower</option>
-                                                <option value="Heritage Park South Tower">Heritage Park South Tower</option>
-                                                <option value="Galdes Park North Tower">Galdes Park North Tower</option>
-                                                <option value="Glades Park South Tower">Glades Park South Tower</option>
-                                                <option value="Glades Davis Pavillion">Glades Davis Pavillion</option>
-                                                <option value="Desantis Pavillion">Desantis Pavillion</option>
-                                                <option value="College of Education">College of Education</option>
-                                                <option value="College of Engineering">College of Engineering</option>
-                                                <option value="Engineering East">Engineering East</option>
-                                                <option value="Engineering West">Engineering West</option>
-                                                <option value="Alumni Center, Marleen and Harold Forkas">Alumni Center, Marleen and Harold Forkas</option>
-                                                <option value="Athletic Field House - Pool">Athletic Field House - Pool</option>
-                                                <option value="Fleming Hall">Fleming Hall</option>
-                                                <option value="Food and Services">Food and Services</option>
-                                                <option value="FAU Stadium">FAU Stadium</option>
-                                                <option value="Athletic Field House West">Athletic Field House West</option>
-                                                <option value="Fleming West">Fleming West</option>
-                                                <option value="General Classroom North">General Classroom North</option>
-                                                <option value="Glades Park Tower">Glades Park Tower</option>
-                                                <option value="General Classroom South">General Classroom South</option>
-                                                <option value="Arena">Arena</option>
-                                                <option value="Heritage Park Towers">Heritage Park Towers</option>
-                                                <option value="AD Henderson Univ School">AD Henderson Univ School</option>
-                                                <option value="Information Booth">Information Booth</option>
-                                                <option value="Indian River Towers">Indian River Towers</option>
-                                           
-											</select>           
-                                            
-                                            <a class="nowrap"> 
-											<input id = "fileInput" type="submit" name="submit" value="Post" class="btn btn-primary" required> 
-                                            <button type="button" value="Clear" onclick= "javascript:eraseText();" class="btn btn-danger">Cancel</button>
-                                            </a>
-                                            <br>
-                                            <div class="right">
-                                                <label class="font">
-                                                    <input  type="checkbox" name="anonymous" value="Yes"> Post Anonymously
-                                                </label>
-                                            </div>
-                                             
-                                           <script> 
-                                               function eraseText() {
-                                                   document.getElementById("status_message").value = "";
-                                               }
-                                            </script>
-                                            
-                                            
-										</div>
-                                           
-                                       
-									</div>
-								</div>
-						</div>
-                    </div>
-			</div>
 			
 		</form>
         
@@ -442,8 +451,12 @@
 	</div>
 	</div> 
 
-            
-            
+            <script> 
+               function eraseText() {
+                   document.getElementById("status_message").value = "";
+               }
+            </script>
+
             
             <!-- /.row -->
             <div class="row">
